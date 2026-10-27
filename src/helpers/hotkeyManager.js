@@ -24,6 +24,8 @@ const SLOT_LABEL_KEYS = {
   dictation: "settingsPage.general.hotkey.title",
   voiceAgent: "settingsPage.general.voiceAgentHotkey.title",
   translation: "settingsPage.general.translationHotkey.title",
+  pasteLastTranscript: "settingsPage.general.pasteLastTranscriptHotkey.title",
+  copyLastTranscript: "settingsPage.general.copyLastTranscriptHotkey.title",
   meeting: "settingsPage.general.meetingHotkey.title",
 };
 

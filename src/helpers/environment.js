@@ -37,6 +37,8 @@ const PERSISTED_KEYS = [
   "DICTATION_KEY",
   "VOICE_AGENT_KEY",
   "TRANSLATION_KEY",
+  "PASTE_LAST_TRANSCRIPT_KEY",
+  "COPY_LAST_TRANSCRIPT_KEY",
   "MEETING_KEY",
   "ACTIVATION_MODE",
   "FLOATING_ICON_AUTO_HIDE",
@@ -411,6 +413,26 @@ class EnvironmentManager {
 
   saveTranslationKey(key) {
     const result = this._saveKey("TRANSLATION_KEY", key);
+    this.saveAllKeysToEnvFile().catch(() => {});
+    return result;
+  }
+
+  getPasteLastTranscriptKey() {
+    return this._getKey("PASTE_LAST_TRANSCRIPT_KEY");
+  }
+
+  savePasteLastTranscriptKey(key) {
+    const result = this._saveKey("PASTE_LAST_TRANSCRIPT_KEY", key);
+    this.saveAllKeysToEnvFile().catch(() => {});
+    return result;
+  }
+
+  getCopyLastTranscriptKey() {
+    return this._getKey("COPY_LAST_TRANSCRIPT_KEY");
+  }
+
+  saveCopyLastTranscriptKey(key) {
+    const result = this._saveKey("COPY_LAST_TRANSCRIPT_KEY", key);
     this.saveAllKeysToEnvFile().catch(() => {});
     return result;
   }

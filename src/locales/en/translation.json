@@ -2480,6 +2480,14 @@
       "translationHotkey": {
         "title": "Translation Hotkey",
         "description": "Dictate in any language — the pasted text comes out translated"
+      },
+      "pasteLastTranscriptHotkey": {
+        "title": "Paste Last Transcript Hotkey",
+        "description": "Paste your most recent dictation again at the cursor"
+      },
+      "copyLastTranscriptHotkey": {
+        "title": "Copy Last Transcript Hotkey",
+        "description": "Copy your most recent dictation to the clipboard without pasting"
       }
     },
     "permissions": {
@@ -3969,6 +3977,10 @@
       "hotkeyUnavailable": {
         "title": "Hotkey unavailable",
         "description": "The selected hotkey could not be registered. Please choose a different one in settings."
+      },
+      "lastTranscriptEmpty": {
+        "title": "No transcript yet",
+        "description": "Dictate something first, then press the hotkey to paste or copy it."
       },
       "addedToDict": "Added {{words}} to your dictionary",
       "undo": "Undo",

@@ -3297,7 +3297,8 @@ class IPCHandlers {
       });
     });
 
-    ipcMain.handle("paste-text", async (event, text, options) => {
+    // Shared by the renderer's paste-text IPC and the "paste last transcript" hotkey.
+    this.pasteText = async (text, options, sender) => {
       // An onboarding demo already puts the transcript in its own textarea from
       // the demo event, and that textarea is what has focus — pasting on top of
       // it appends the same sentence a second time. This is a successful no-op,
@@ -3361,7 +3362,7 @@ class IPCHandlers {
       try {
         pasteResult = await this.clipboardManager.pasteText(textToPaste, {
           ...options,
-          webContents: event.sender,
+          webContents: sender,
           targetWindow,
           silentAccessibilityCheck: true,
         });
@@ -3407,7 +3408,10 @@ class IPCHandlers {
         pasted,
         ...(pasteResult?.reason ? { reason: pasteResult.reason } : {}),
       };
-    });
+    };
+    ipcMain.handle("paste-text", (event, text, options) =>
+      this.pasteText(text, options, event.sender)
+    );
 
     ipcMain.handle("check-accessibility-permission", async (_event, silent = false) => {
       return this.clipboardManager.checkAccessibilityPermissions(silent);
@@ -12135,6 +12139,54 @@ class IPCHandlers {
     ipcMain.handle("get-translation-key", async () => {
       return this.environmentManager.getTranslationKey?.() || "";
     });
+
+    // "Paste last transcript" / "Copy last transcript" hotkeys: same shape as
+    // the translation slot, with the action in lastTranscript.js.
+    for (const [slot, channel, saver, getter] of [
+      [
+        "pasteLastTranscript",
+        "paste-last-transcript",
+        "savePasteLastTranscriptKey",
+        "getPasteLastTranscriptKey",
+      ],
+      [
+        "copyLastTranscript",
+        "copy-last-transcript",
+        "saveCopyLastTranscriptKey",
+        "getCopyLastTranscriptKey",
+      ],
+    ]) {
+      ipcMain.handle(`update-${channel}-hotkey`, async (_event, hotkey) => {
+        const hotkeyManager = this.windowManager.hotkeyManager;
+        const callback = this.windowManager._lastTranscriptHotkeyCallbacks?.[slot];
+        if (!callback) {
+          return { success: false };
+        }
+
+        if (!hotkey) {
+          const removed = await hotkeyManager.unregisterSlot(slot);
+          if (removed === false) return { success: false };
+          this.environmentManager[saver]?.("");
+          this.windowManager.reconcileNativeKeyListeners();
+          this._notifyHotkeyChanged("");
+          return { success: true, message: `${slot} hotkey cleared` };
+        }
+
+        const result = await hotkeyManager.registerSlot(slot, hotkey, callback, { atomic: true });
+        this.windowManager.reconcileNativeKeyListeners();
+        if (result.success) {
+          this.environmentManager[saver]?.(hotkey);
+          this._notifyHotkeyChanged(hotkey);
+          return { success: true, message: `${slot} hotkey updated to: ${hotkey}` };
+        }
+
+        return { success: false, message: result.error };
+      });
+
+      ipcMain.handle(`get-${channel}-key`, async () => {
+        return this.environmentManager[getter]?.() || "";
+      });
+    }
 
     ipcMain.handle("acquire-recording-lock", async (_event, pipeline) => {
       if (this._activeRecordingPipeline && this._activeRecordingPipeline !== pipeline) {

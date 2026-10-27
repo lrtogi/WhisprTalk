@@ -15,6 +15,7 @@ if (shouldForceXWayland(process.argv)) {
 
 const {
   app,
+  clipboard,
   desktopCapturer,
   globalShortcut,
   BrowserWindow,
@@ -297,6 +298,7 @@ const TrayManager = require("./src/helpers/tray");
 const dockManager = require("./src/helpers/dockManager");
 const autoStart = require("./src/helpers/autoStart");
 const IPCHandlers = require("./src/helpers/ipcHandlers");
+const { runLastTranscriptHotkey } = require("./src/helpers/lastTranscript");
 const CliBridge = require("./src/helpers/cliBridge");
 const UpdateManager = require("./src/updater");
 const GlobeKeyManager = require("./src/helpers/globeKeyManager");
@@ -1344,6 +1346,48 @@ async function startApp() {
     hotkeyManager.notifyRestoreFailures(savedTranslationKey, result);
   }
 
+  // Set up "paste last transcript" / "copy last transcript" hotkeys: the newest
+  // dictation goes through the regular paste path (fast paste, clipboard
+  // restore) or only to the clipboard.
+  windowManager._lastTranscriptHotkeyCallbacks = {};
+  for (const [slot, copyOnly, getSavedKey] of [
+    ["pasteLastTranscript", false, () => environmentManager.getPasteLastTranscriptKey?.()],
+    ["copyLastTranscript", true, () => environmentManager.getCopyLastTranscriptKey?.()],
+  ]) {
+    const isPress = createHotkeyRepeatGate();
+    const callback = () => {
+      if (!isPress()) return;
+      runLastTranscriptHotkey({
+        databaseManager,
+        copyOnly,
+        paste: (text) =>
+          ipcHandlers.pasteText(
+            text,
+            {},
+            isLiveWindow(windowManager.mainWindow) ? windowManager.mainWindow.webContents : null
+          ),
+        copy: (text) => clipboard.writeText(text),
+        notifyEmpty: () => {
+          if (isLiveWindow(windowManager.mainWindow)) {
+            windowManager.mainWindow.webContents.send("last-transcript-empty");
+          }
+        },
+      }).catch((error) => {
+        debugLogger.warn(`${slot} hotkey failed`, { error: error.message }, "hotkey");
+      });
+    };
+    windowManager._lastTranscriptHotkeyCallbacks[slot] = callback;
+
+    const savedKey = getSavedKey() || "";
+    if (savedKey) {
+      const result = await hotkeyManager.registerSlot(slot, savedKey, callback);
+      if (!result.success) {
+        debugLogger.warn(`Failed to restore ${slot} hotkey`, { hotkey: savedKey }, "hotkey");
+      }
+      hotkeyManager.notifyRestoreFailures(savedKey, result);
+    }
+  }
+
   // Set up meeting mode hotkey
   const isMeetingPress = createHotkeyRepeatGate();
   const meetingHotkeyCallback = () => {
@@ -1890,6 +1934,10 @@ async function startApp() {
         windowManager.sendToggleVoiceAgent();
       } else if (hotkeyManager.slotHasHotkey("translation", key)) {
         windowManager.sendToggleTranslation();
+      } else if (hotkeyManager.slotHasHotkey("pasteLastTranscript", key)) {
+        windowManager._lastTranscriptHotkeyCallbacks.pasteLastTranscript();
+      } else if (hotkeyManager.slotHasHotkey("copyLastTranscript", key)) {
+        windowManager._lastTranscriptHotkeyCallbacks.copyLastTranscript();
       } else if (hotkeyManager.slotHasHotkey("meeting", key)) {
         windowManager.startManualMeeting({ activate: false });
       }
