@@ -50,7 +50,7 @@ Cloudflare" setup you asked for. Later, in Settings:
 Google Meet / Zoom: WhisprTalk detects the mic going live and offers to start a note. It records your mic
 plus system audio locally; no bot joins. Offline meetings: start a note manually (meeting hotkey).
 
-**iPhone:** On-Device transcription (Whisper/Parakeet) and, for cloud, AI Models → Bring Your Own Key →
+**iPhone** (installed as `com.lrtogi.whisprtalk.ios`, signed by the free Personal Team of togisihombing@gmail.com, re-sign every 7 days): On-Device transcription (Whisper/Parakeet) and, for cloud, AI Models → Bring Your Own Key →
 Custom → the same Worker URL. Dictation keyboard needs a paid Apple team (App Groups), so the free-team
 build has no keyboard; see iphone-install.md.
 

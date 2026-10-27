@@ -1,9 +1,16 @@
 # WhisprTalk on iPhone (openwhispr-mobile)
 
-Status (2026-10-27): a **Release build signed with the free Personal Team "Louis Partogi" (GYR4C58JWC)**
-is installed on the iPhone "Louis" (iPhone 16 Pro, UDID `00008140-000905D83CFB001C`) as **WhisprTalk**
-(`com.lrtogi.whisprtalk`). It does not launch until you trust the developer profile on the phone
-(see "First launch" below). It is a self-contained Release build: no Metro, the phone can be unplugged.
+Status (2026-10-27): a **Release build signed with the free Personal Team "Louis Rizki Partogi" (H8MQT3PRR9,
+the team of the Apple ID togisihombing@gmail.com)** is installed and running on the iPhone "Louis"
+(iPhone 16 Pro, UDID `00008140-000905D83CFB001C`) as **WhisprTalk** (`com.lrtogi.whisprtalk.ios`).
+It is a self-contained Release build: no Metro, the phone can be unplugged.
+
+Why `.ios` on the bundle ID: a first attempt used team GYR4C58JWC, which turned out to be the Personal Team of
+the l.partogi@sprintdigital.com.au Apple ID. That attempt registered the App ID `com.lrtogi.whisprtalk` with
+GYR4C58JWC, and Apple does not let a second team register the same App ID ("Failed Registering Bundle
+Identifier ... not available"), so the gmail team uses `com.lrtogi.whisprtalk.ios`. That build was uninstalled
+from the phone; the GYR4C58JWC certificate and App ID still exist in Apple's portal (free teams cannot delete
+App IDs) and in the login keychain, and are simply unused.
 
 Built app: `openwhispr-mobile/ios/build/dd/Build/Products/Release-iphoneos/OpenWhispr.app`
 (the Xcode target is still called OpenWhispr; the home-screen name is WhisprTalk).
@@ -23,7 +30,7 @@ Built app: `openwhispr-mobile/ios/build/dd/Build/Products/Release-iphoneos/OpenW
 
 ```dotenv
 OPENWHISPR_APP_ENV=development
-OPENWHISPR_IOS_BUNDLE_IDENTIFIER=com.lrtogi.whisprtalk
+OPENWHISPR_IOS_BUNDLE_IDENTIFIER=com.lrtogi.whisprtalk.ios
 OPENWHISPR_ANDROID_PACKAGE=com.lrtogi.whisprtalk
 OPENWHISPR_SCHEME=whisprtalk
 OPENWHISPR_DISPLAY_NAME=WhisprTalk
@@ -80,29 +87,39 @@ cd ios
 xcodebuild -workspace OpenWhispr.xcworkspace -scheme OpenWhispr \
   -configuration Release -destination 'id=00008140-000905D83CFB001C' \
   -derivedDataPath build/dd -allowProvisioningUpdates \
-  DEVELOPMENT_TEAM=GYR4C58JWC CODE_SIGN_STYLE=Automatic build
+  DEVELOPMENT_TEAM=H8MQT3PRR9 CODE_SIGN_STYLE=Automatic build
+
+# check the signature before installing: expect Authority=Apple Development: togisihombing@gmail.com (...)
+# and TeamIdentifier=H8MQT3PRR9
+codesign -dvv build/dd/Build/Products/Release-iphoneos/OpenWhispr.app
 
 # install and launch (phone unlocked, Developer Mode on)
 xcrun devicectl device install app --device 00008140-000905D83CFB001C \
   build/dd/Build/Products/Release-iphoneos/OpenWhispr.app
-xcrun devicectl device process launch --device 00008140-000905D83CFB001C com.lrtogi.whisprtalk
+xcrun devicectl device process launch --device 00008140-000905D83CFB001C com.lrtogi.whisprtalk.ios
 ```
 
-Signing facts, for the record:
-- `-allowProvisioningUpdates` created a new certificate for the Personal Team, "Apple Development:
-  l.partogi@sprintdigital.com.au (Z68VLZAFZ8)", and a wildcard-free development profile. `codesign -dvv` on the
-  .app shows `TeamIdentifier=GYR4C58JWC` and entitlements of only `application-identifier` and `get-task-allow`.
+Signing facts, for the record (Personal Team → Apple ID mapping, from the minted certificates' OU):
+- **H8MQT3PRR9 "Louis Rizki Partogi (Personal Team)" = togisihombing@gmail.com.** This is the team to use.
+  `-allowProvisioningUpdates` minted "Apple Development: togisihombing@gmail.com (9JLCZ33G97)". `codesign -dvv`
+  on the installed .app shows `TeamIdentifier=H8MQT3PRR9` and entitlements of only `application-identifier`
+  and `get-task-allow`.
+- GYR4C58JWC "Louis Partogi (Personal Team)" = l.partogi@sprintdigital.com.au (it minted "Apple Development:
+  l.partogi@sprintdigital.com.au (Z68VLZAFZ8)"). Do not use it.
 - The pre-existing "Apple Development: Louis Partogi (W554539V87)", "Louis Rizki Partogi (HHTR9B3HGC)" and
-  "Created via API" certs carry the company team IDs (OU N8H5B55PTU / ZJ54NQ9C46) and were not used; automatic
-  signing cannot pair them with GYR4C58JWC.
+  "Created via API" certs carry the company team IDs (OU N8H5B55PTU / ZJ54NQ9C46) and were never used; automatic
+  signing cannot pair them with a Personal Team.
 - No `DEVELOPMENT_TEAM` is written into `ios/OpenWhispr.xcodeproj` in free-team mode; it only comes from the command line.
+- Changing only the bundle ID does not need `--clean`: `npm run prebuild:dev -- --platform ios` re-syncs `ios/`
+  and keeps `build/dd`, so the rebuild is incremental.
 - The simulator build from before (Debug, `CODE_SIGNING_ALLOWED=NO`, `-sdk iphonesimulator`) still works with the same workspace.
 
-## First launch (do this on the phone)
+## First launch (on the phone)
 
-The install succeeded but `process launch` returned "profile has not been explicitly trusted by the user".
-On the iPhone: **Settings → General → VPN & Device Management → Developer App → "Apple Development:
-l.partogi@sprintdigital.com.au" → Trust → Trust**. Then tap the WhisprTalk icon (or rerun the launch command above).
+The H8MQT3PRR9 build launched straight away from `devicectl`. If iOS ever refuses with "profile has not been
+explicitly trusted by the user" (for example after a reinstall with a new certificate), trust it on the iPhone:
+**Settings → General → VPN & Device Management → Developer App → "Apple Development: togisihombing@gmail.com"
+→ Trust → Trust**, then tap the WhisprTalk icon or rerun the launch command above.
 Developer Mode is already on (checked with `devicectl device info details`).
 
 ## Free Personal Team limits
@@ -122,5 +139,5 @@ Developer Mode is already on (checked with `devicectl device info details`).
 ## Going back to the full build (paid team only)
 
 Remove `OPENWHISPR_FREE_TEAM=1` from `.env.local`, run `prebuild --clean` again, and sign all three targets with a
-paid Apple Developer Program team in Xcode (App Group `group.com.lrtogi.whisprtalk`, push, Sign in with Apple).
+paid Apple Developer Program team in Xcode (App Group `group.com.lrtogi.whisprtalk.ios`, push, Sign in with Apple).
 That restores the dictation keyboard and the Live Activity.
