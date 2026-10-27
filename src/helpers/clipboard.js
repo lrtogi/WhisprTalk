@@ -2299,7 +2299,7 @@ class ClipboardManager {
 
 🔧 To fix this:
 1. Open System Settings → Privacy & Security → Accessibility
-2. Look for ANY old "OpenWhispr" entries and REMOVE them (click the - button)
+2. Look for ANY old "WhisprTalk" or "OpenWhispr" entries and REMOVE them (click the - button)
 3. Also remove any entries that say "Electron" or have unclear names
 4. Click the + button and manually add the NEW OpenWhispr app
 5. Make sure the checkbox is enabled

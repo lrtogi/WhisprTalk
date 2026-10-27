@@ -64,12 +64,12 @@
     },
     "openControlPanel": "Kontrollzentrum öffnen",
     "hideControlPanel": "Kontrollzentrum ausblenden",
-    "quit": "OpenWhispr beenden",
-    "tooltip": "OpenWhispr – Sprachdiktat"
+    "quit": "WhisprTalk beenden",
+    "tooltip": "WhisprTalk – Sprachdiktat"
   },
   "menu": {
-    "appLabel": "OpenWhispr",
-    "quit": "OpenWhispr beenden",
+    "appLabel": "WhisprTalk",
+    "quit": "WhisprTalk beenden",
     "speech": "Sprache",
     "settings": "Einstellungen …",
     "help": "Hilfe",
@@ -87,8 +87,8 @@
       "message": "Der Link konnte im Browser nicht geöffnet werden:\n{{url}}\n\nFehler: {{error}}"
     },
     "loadFailure": {
-      "title": "OpenWhispr konnte nicht geladen werden",
-      "message": "OpenWhispr konnte die Benutzeroberfläche nicht laden.",
+      "title": "WhisprTalk konnte nicht geladen werden",
+      "message": "WhisprTalk konnte die Benutzeroberfläche nicht laden.",
       "detail": {
         "window": "Fenster: {{windowName}}",
         "error": "Fehler {{errorCode}}: {{errorDescription}}",
@@ -104,12 +104,12 @@
     },
     "globeHotkey": {
       "title": "Globe-Hotkey nicht verfügbar",
-      "message": "OpenWhispr konnte den Globe-Hotkey nicht aktivieren.",
+      "message": "WhisprTalk konnte den Globe-Hotkey nicht aktivieren.",
       "details": {
         "unknown": "Unbekannter Fehler beim Starten des Globe-Listeners.",
         "fallback": "Der Globe-Hotkey bleibt deaktiviert; vorhandene Tastenkürzel funktionieren weiterhin.",
         "devHint": "Führen Sie `npm run compile:globe` aus und bauen Sie die App neu, um die Binary neu zu erzeugen.",
-        "reinstallHint": "Installieren Sie OpenWhispr neu oder kontaktieren Sie den Support, wenn das Problem bestehen bleibt."
+        "reinstallHint": "Installieren Sie WhisprTalk neu oder kontaktieren Sie den Support, wenn das Problem bestehen bleibt."
       }
     }
   },
@@ -220,7 +220,7 @@
   "onboarding": {
     "rehaul": {
       "permissions": {
-        "title": "OpenWhispr in 3 Minuten einrichten",
+        "title": "WhisprTalk in 3 Minuten einrichten",
         "microphoneDescription": "Hört nur während der Aufnahme zu.",
         "accessibilityDescription": "Fügt Text in jede App ein.",
         "systemAudioTitle": "Systemaudio",
@@ -233,7 +233,7 @@
         "title": "Welche Sprachen sprechen Sie?",
         "titleLineOne": "Welche Sprachen",
         "titleLineTwo": "sprichst du?",
-        "description": "Wählen Sie alle zutreffenden aus. Das hilft OpenWhispr, Sprachwechsel genauer zu erkennen."
+        "description": "Wählen Sie alle zutreffenden aus. Das hilft WhisprTalk, Sprachwechsel genauer zu erkennen."
       },
       "dictationHotkey": {
         "title": "Wählen Sie Ihr Diktier-Tastenkürzel",
@@ -243,10 +243,10 @@
         "activation": "Tippen oder halten?"
       },
       "assistantHotkey": {
-        "title": "OpenWhispr Assistant einrichten",
+        "title": "WhisprTalk Assistant einrichten",
         "titleLineOne": "Einrichten:",
-        "titleLineTwo": "OpenWhispr Assistant",
-        "description": "Sprechen Sie eine Anfrage aus. OpenWhispr Assistant schreibt das Ergebnis für Sie."
+        "titleLineTwo": "WhisprTalk Assistant",
+        "description": "Sprechen Sie eine Anfrage aus. WhisprTalk Assistant schreibt das Ergebnis für Sie."
       },
       "hotkey": {
         "capture": "Drücken Sie die Taste, die Sie verwenden möchten",
@@ -258,15 +258,15 @@
         "title": "Probieren Sie Ihr erstes Diktat aus",
         "titleLineOne": "Probieren Sie Ihr",
         "titleLineTwo": "erstes Diktat aus",
-        "description": "Drücken Sie {{hotkey}} und sprechen Sie los. OpenWhispr wandelt Ihre Stimme in Text um.",
-        "founder": "Hallo, ich bin Gabe, der Gründer. Danke, dass Sie OpenWhispr ausprobieren!",
-        "prompt": "Klicken Sie in das Feld unten, drücken Sie Ihr Tastenkürzel und sagen Sie mir: Was soll OpenWhispr für Sie tun?",
-        "placeholder": "Klicken Sie hier und drücken Sie dann Ihr Tastenkürzel. OpenWhispr schreibt in jedes Textfeld."
+        "description": "Drücken Sie {{hotkey}} und sprechen Sie los. WhisprTalk wandelt Ihre Stimme in Text um.",
+        "founder": "Hallo, ich bin Gabe, der Gründer. Danke, dass Sie WhisprTalk ausprobieren!",
+        "prompt": "Klicken Sie in das Feld unten, drücken Sie Ihr Tastenkürzel und sagen Sie mir: Was soll WhisprTalk für Sie tun?",
+        "placeholder": "Klicken Sie hier und drücken Sie dann Ihr Tastenkürzel. WhisprTalk schreibt in jedes Textfeld."
       },
       "assistantDemo": {
-        "title": "OpenWhispr Assistant kennenlernen",
+        "title": "WhisprTalk Assistant kennenlernen",
         "titleLineOne": "Das ist",
-        "titleLineTwo": "OpenWhispr Assistant",
+        "titleLineTwo": "WhisprTalk Assistant",
         "email": {
           "subject": "Kaffee nächste Woche?",
           "senderName": "Maria Alvarez",
@@ -300,13 +300,13 @@
         "typing": "Schreibt…"
       },
       "notes": {
-        "title": "Meetings ohne Bot aufzeichnen – mit OpenWhispr Notes",
+        "title": "Meetings ohne Bot aufzeichnen – mit WhisprTalk Notes",
         "titleLineOne": "Meetings ohne Bot aufzeichnen",
-        "titleLineTwoPrefix": "mit OpenWhispr",
+        "titleLineTwoPrefix": "mit WhisprTalk",
         "titleLineTwoBrand": "Notes",
-        "description": "OpenWhispr verwandelt Ihr Gespräch in klare Notizen. Kein Meeting-Bot nimmt an Ihrem Anruf teil.",
+        "description": "WhisprTalk verwandelt Ihr Gespräch in klare Notizen. Kein Meeting-Bot nimmt an Ihrem Anruf teil.",
         "hero": {
-          "description": "Zeichnen Sie Ihr Meeting auf und lassen Sie OpenWhispr das Gespräch in klare, strukturierte Notizen verwandeln.",
+          "description": "Zeichnen Sie Ihr Meeting auf und lassen Sie WhisprTalk das Gespräch in klare, strukturierte Notizen verwandeln.",
           "chat": "Mit Ihren Meeting-Notizen chatten",
           "transcript": "Das vollständige Transkript ansehen",
           "speakers": "Sehen, wer was gesagt hat"
@@ -479,14 +479,14 @@
       "accessibilityTitle": "Bedienungshilfen",
       "accessibilityDescription": "Fügt den fertigen Text direkt in die App ein, in der du gerade bist — Dokumente, E-Mail, Chat.",
       "testAndGrant": "Testen & erteilen",
-      "requiredForApp": "Erforderlich, damit OpenWhispr funktioniert",
+      "requiredForApp": "Erforderlich, damit WhisprTalk funktioniert",
       "microphoneRequired": "Mikrofonzugriff erforderlich",
       "openSystemSettings": "Systemeinstellungen öffnen",
       "systemAudioTitle": "Systemaudio",
       "systemAudioDescription": "Lässt den Meeting-Rekorder die Gegenseite deiner Anrufe hören — Meetings, Vorlesungen, Podcasts. Kann später in den Einstellungen aktiviert werden.",
       "optional": "Optional",
       "recommended": "Empfohlen",
-      "accessibilityTroubleshooting": "Schalte in Systemeinstellungen → Bedienungshilfen den Schalter für OpenWhispr aus und wieder ein. Wenn OpenWhispr gar nicht in der Liste steht, klicke auf + und füge es aus dem Programme-Ordner hinzu. Klappt's immer noch nicht? Schreib an support@openwhispr.com."
+      "accessibilityTroubleshooting": "Schalte in Systemeinstellungen → Bedienungshilfen den Schalter für WhisprTalk aus und wieder ein. Wenn WhisprTalk gar nicht in der Liste steht, klicke auf + und füge es aus dem Programme-Ordner hinzu. Klappt's immer noch nicht? Schreib an support@openwhispr.com."
     },
     "transcription": {
       "title": "Transkriptions-Einrichtung",
@@ -512,12 +512,12 @@
       "continue": "Trotzdem fortfahren"
     },
     "useCase": {
-      "title": "Wie wirst du OpenWhispr nutzen?",
+      "title": "Wie wirst du WhisprTalk nutzen?",
       "titleLineOne": "Wie wirst du",
-      "titleLineTwo": "OpenWhispr nutzen?",
+      "titleLineTwo": "WhisprTalk nutzen?",
       "description": "Wähle alles Zutreffende aus. Wir passen die Einrichtung darauf an.",
       "noteLabel": "Möchtest du uns noch etwas mitteilen?",
-      "notePlaceholder": "Erzähl uns, wie du OpenWhispr nutzen möchtest (optional)",
+      "notePlaceholder": "Erzähl uns, wie du WhisprTalk nutzen möchtest (optional)",
       "proceedToSetup": "Mit der Einrichtung fortfahren",
       "options": {
         "dictation": {
@@ -550,7 +550,7 @@
     "meeting": {
       "title": "Meeting-Notizen",
       "description": "Erfasse und fasse deine Meetings zusammen",
-      "autoDetect": "OpenWhispr erkennt automatisch, wenn du in einem Meeting bist, und bietet an, Notizen zu starten — ohne dich wird nichts aufgenommen.",
+      "autoDetect": "WhisprTalk erkennt automatisch, wenn du in einem Meeting bist, und bietet an, Notizen zu starten — ohne dich wird nichts aufgenommen.",
       "hotkeyLabel": "Meeting-Hotkey",
       "hotkeyHint": "Optional — drücke ihn in jedem Meeting, um sofort eine Notiz zu starten."
     },
@@ -591,14 +591,14 @@
       "return": "Zurück zur Einrichtung",
       "missingApp": "Oder wähle die App über +",
       "failed": "Zugriff konnte nicht geprüft werden.",
-      "microphone": "Aktiviere OpenWhispr unter Mikrofon.",
-      "accessibility": "Ziehe OpenWhispr in Bedienungshilfen und aktiviere es.",
-      "systemAudio": "Aktiviere OpenWhispr unter „Nur Systemaudioaufnahme“.",
-      "screenContext": "Ziehe OpenWhispr in „Bildschirm- & Systemaudioaufnahme“ und aktiviere es.",
+      "microphone": "Aktiviere WhisprTalk unter Mikrofon.",
+      "accessibility": "Ziehe WhisprTalk in Bedienungshilfen und aktiviere es.",
+      "systemAudio": "Aktiviere WhisprTalk unter „Nur Systemaudioaufnahme“.",
+      "screenContext": "Ziehe WhisprTalk in „Bildschirm- & Systemaudioaufnahme“ und aktiviere es.",
       "settings": "Einstellungen",
       "check": "Erneut prüfen",
       "restart": "App neu starten",
-      "restartRequired": "Starte OpenWhispr für den Bildschirmzugriff neu."
+      "restartRequired": "Starte WhisprTalk für den Bildschirmzugriff neu."
     }
   },
   "streaming": {
@@ -617,13 +617,13 @@
   "controlPanel": {
     "updateRequiredByOrg": {
       "title": "Update erforderlich",
-      "description": "Ihre Organisation erfordert OpenWhispr {{version}} oder neuer. Bitte aktualisieren Sie die App."
+      "description": "Ihre Organisation erfordert WhisprTalk {{version}} oder neuer. Bitte aktualisieren Sie die App."
     },
     "update": {
       "readyTitle": "Update bereit zur Installation",
       "readyDescription": "Klicken Sie auf 'Update installieren', um mit der neuesten Version neu zu starten.",
       "installTitle": "Update installieren",
-      "installDescription": "OpenWhispr startet neu, um das Update anzuwenden. Laufende Arbeit wird gespeichert.",
+      "installDescription": "WhisprTalk startet neu, um das Update anzuwenden. Laufende Arbeit wird gespeichert.",
       "couldNotInstallTitle": "Update konnte nicht installiert werden",
       "couldNotInstallDescription": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
       "couldNotDownloadTitle": "Update konnte nicht heruntergeladen werden",
@@ -638,7 +638,7 @@
     },
     "accessibilityMissing": {
       "title": "Bedienungshilfen-Berechtigungen benötigt",
-      "description": "Wir haben festgestellt, dass OpenWhispr Bedienungshilfen-Berechtigungen benötigt, um korrekt zu funktionieren. Bitte aktivieren Sie diese unten."
+      "description": "Wir haben festgestellt, dass WhisprTalk Bedienungshilfen-Berechtigungen benötigt, um korrekt zu funktionieren. Bitte aktivieren Sie diese unten."
     },
     "billing": {
       "pastDueTitle": "Ihre Zahlung konnte nicht verarbeitet werden",
@@ -995,22 +995,22 @@
         "notAppliedTitle": "Auswahlbearbeitung nicht angewendet",
         "changed": "Der ausgewählte Text oder die Ziel-App wurde während der Verarbeitung geändert. Es wurde nichts ersetzt.",
         "expired": "Die Auswahlbearbeitung ist abgelaufen. Wähle den Text erneut aus und versuche es noch einmal.",
-        "pasteFailed": "OpenWhispr hat die Bearbeitung erstellt, konnte den ausgewählten Text aber nicht ersetzen.",
-        "modifiersHeld": "OpenWhispr hat die Bearbeitung erstellt, aber eine Sondertaste (z. B. Strg oder Umschalt) war noch gedrückt, daher wurde sie nicht angewendet. Die Bearbeitung befindet sich in der Zwischenablage.",
-        "modifiersHeldClipboardFailed": "OpenWhispr hat die Bearbeitung erstellt, aber eine Sondertaste (z. B. Strg oder Umschalt) war noch gedrückt, daher wurde sie nicht angewendet und konnte auch nicht in die Zwischenablage kopiert werden.",
-        "unavailable": "OpenWhispr konnte den ausgewählten Text nicht sicher lesen. Prüfe die Bedienungshilfen oder Eingabeautomatisierung.",
+        "pasteFailed": "WhisprTalk hat die Bearbeitung erstellt, konnte den ausgewählten Text aber nicht ersetzen.",
+        "modifiersHeld": "WhisprTalk hat die Bearbeitung erstellt, aber eine Sondertaste (z. B. Strg oder Umschalt) war noch gedrückt, daher wurde sie nicht angewendet. Die Bearbeitung befindet sich in der Zwischenablage.",
+        "modifiersHeldClipboardFailed": "WhisprTalk hat die Bearbeitung erstellt, aber eine Sondertaste (z. B. Strg oder Umschalt) war noch gedrückt, daher wurde sie nicht angewendet und konnte auch nicht in die Zwischenablage kopiert werden.",
+        "unavailable": "WhisprTalk konnte den ausgewählten Text nicht sicher lesen. Prüfe die Bedienungshilfen oder Eingabeautomatisierung.",
         "tooLarge": "Die Auswahl ist zu groß. Wähle höchstens 6.000 Zeichen aus.",
         "reasoningFailed": "Die KI konnte die Auswahlbearbeitung nicht abschließen. Dein ursprünglicher Text wurde nicht geändert.",
         "invalidResponse": "Die KI hat eine ungültige Bearbeitungsantwort zurückgegeben. Es wurde nichts ersetzt. Wähle den Text aus und versuche es erneut.",
         "emptyResponse": "Die KI hat eine leere Bearbeitung zurückgegeben. Es wurde nichts ersetzt. Versuche eine genauere Anweisung.",
         "truncatedResponse": "Die KI hat die Bearbeitung vorzeitig beendet. Es wurde nichts ersetzt. Versuche, weniger Text auszuwählen.",
-        "wlCopyMissing": "OpenWhispr hat die Änderung erstellt, aber auf diesem Desktop können Wayland-Apps eingefügten Text nur über wl-copy lesen. Installiere wl-clipboard, um Änderungen anzuwenden.",
-        "wlCopyFailed": "OpenWhispr hat die Änderung erstellt, aber wl-copy konnte sie nicht für Wayland-Apps kopieren, daher wurde sie nicht angewendet."
+        "wlCopyMissing": "WhisprTalk hat die Änderung erstellt, aber auf diesem Desktop können Wayland-Apps eingefügten Text nur über wl-copy lesen. Installiere wl-clipboard, um Änderungen anzuwenden.",
+        "wlCopyFailed": "WhisprTalk hat die Änderung erstellt, aber wl-copy konnte sie nicht für Wayland-Apps kopieren, daher wurde sie nicht angewendet."
       },
       "pastePermission": {
         "title": "Automatisches Einfügen erlauben",
-        "description": "Aktiviere OpenWhispr unter Systemeinstellungen → Datenschutz & Sicherheit → Bedienungshilfen.",
-        "settingsFailed": "Die Einstellungen konnten nicht geöffnet werden. Öffne Systemeinstellungen → Datenschutz & Sicherheit → Bedienungshilfen und aktiviere OpenWhispr.",
+        "description": "Aktiviere WhisprTalk unter Systemeinstellungen → Datenschutz & Sicherheit → Bedienungshilfen.",
+        "settingsFailed": "Die Einstellungen konnten nicht geöffnet werden. Öffne Systemeinstellungen → Datenschutz & Sicherheit → Bedienungshilfen und aktiviere WhisprTalk.",
         "manualPaste": "Kopiere deinen Text unten und drücke dann {{shortcut}}, um ihn einzufügen.",
         "openSettings": "Einstellungen öffnen",
         "copyToClipboard": "Text kopieren",
@@ -1019,7 +1019,7 @@
       "pasteFailed": {
         "title": "Automatisches Einfügen fehlgeschlagen"
       },
-      "interruptedRecordingRecovered": "Wiederhergestellt, nachdem OpenWhispr vor dem Ende dieses Diktats beendet wurde.",
+      "interruptedRecordingRecovered": "Wiederhergestellt, nachdem WhisprTalk vor dem Ende dieses Diktats beendet wurde.",
       "waylandClipboard": {
         "title": "Transkription nicht eingefügt",
         "wlCopyMissing": "Auf diesem Desktop können Wayland-Apps eingefügten Text nur über wl-copy lesen. Installiere wl-clipboard, um deine Diktate einzufügen.",
@@ -1096,7 +1096,7 @@
       "micErrors": {
         "accessFailed": "Mikrofonzugriff fehlgeschlagen. Bitte versuchen Sie es erneut.",
         "noMicrophones": "Keine Mikrofone erkannt. Verbinden oder wählen Sie ein Mikrofon in {{settingsPath}}.",
-        "permissionDenied": "Berechtigung verweigert. Öffnen Sie {{privacyPath}} und erlauben Sie OpenWhispr.",
+        "permissionDenied": "Berechtigung verweigert. Öffnen Sie {{privacyPath}} und erlauben Sie WhisprTalk.",
         "couldNotStart": "Ausgewähltes Mikrofon konnte nicht gestartet werden. Wählen Sie ein Eingabegerät in {{settingsPath}} und führen Sie den Test erneut aus.",
         "noActiveInput": "Keine aktive Audioeingabe gefunden. Wählen Sie ein Mikrofon in {{settingsPath}}.",
         "unknown": "Mikrofonzugriff fehlgeschlagen: {{error}}. Wählen Sie ein anderes Eingabegerät und versuchen Sie es erneut.",
@@ -1125,8 +1125,8 @@
         "accessibilityNeeded": "Bitte gewähren Sie Bedienungshilfen-Berechtigungen in den Systemeinstellungen, um automatisches Einfügen zu ermöglichen.",
         "windowsReady": "Windows benötigt keine speziellen Berechtigungen für automatisches Einfügen. Alles bereit!",
         "linuxReadyWithMethod": "Automatisches Einfügen ist mit {{method}} verfügbar. Alles bereit!",
-        "waylandClipboardMode": "Automatisches Einfügen ist in dieser Wayland-Sitzung nicht verfügbar. OpenWhispr kopiert den Text in die Zwischenablage und Sie können mit Ctrl+V einfügen.",
-        "optionalPasteTool": "Für automatisches Einfügen installieren Sie {{tool}}:\n\n{{installCmd}}{{waylandNote}}\n\nOhne dieses Tool können Sie OpenWhispr weiterhin nutzen – Text wird in die Zwischenablage kopiert und Sie können mit Ctrl+V einfügen."
+        "waylandClipboardMode": "Automatisches Einfügen ist in dieser Wayland-Sitzung nicht verfügbar. WhisprTalk kopiert den Text in die Zwischenablage und Sie können mit Ctrl+V einfügen.",
+        "optionalPasteTool": "Für automatisches Einfügen installieren Sie {{tool}}:\n\n{{installCmd}}{{waylandNote}}\n\nOhne dieses Tool können Sie WhisprTalk weiterhin nutzen – Text wird in die Zwischenablage kopiert und Sie können mit Ctrl+V einfügen."
       },
       "alerts": {
         "accessibilityNeeded": "Bedienungshilfen-Berechtigungen erforderlich! Bitte erlauben Sie diese in den Systemeinstellungen."
@@ -1139,7 +1139,7 @@
         "defaultPasteTool": "xdotool",
         "xdotoolXwayland": "xdotool (XWayland-Apps)"
       },
-      "accessibilityTestText": "OpenWhispr Bedienungshilfen-Test",
+      "accessibilityTestText": "WhisprTalk Bedienungshilfen-Test",
       "warning": {
         "messages": {
           "macos": "Prüfen Sie die Toneinstellungen, um Ihr Eingabegerät auszuwählen",
@@ -1216,7 +1216,7 @@
       "emailRequired": "Geben Sie Ihre geschäftliche E-Mail-Adresse ein, um SSO zu verwenden.",
       "failed": "Single Sign-on fehlgeschlagen. Bitte versuchen Sie es erneut.",
       "companySignInTitle": "Unternehmensanmeldung verwenden",
-      "requiredDescription": "{{domain}} erfordert SSO für OpenWhispr.",
+      "requiredDescription": "{{domain}} erfordert SSO für WhisprTalk.",
       "availableDescription": "Ihr {{domain}}-Konto ist für das Unternehmens-SSO bereit.",
       "useEmailInstead": "Stattdessen E-Mail und Passwort verwenden"
     },
@@ -1228,7 +1228,7 @@
       "protocolUnavailable": "Browser-Anmeldung nicht verfügbar — registrieren Sie das openwhispr://-Protokoll in den Standardanwendungs-Einstellungen Ihres Systems erneut."
     },
     "welcomeSubtitle": "Die Kraft Ihrer Stimme. Zu Ihren Bedingungen.",
-    "welcomeTitle": "Willkommen bei OpenWhispr",
+    "welcomeTitle": "Willkommen bei WhisprTalk",
     "sessionExpired": "Sitzung abgelaufen"
   },
   "calendar": {
@@ -1270,7 +1270,7 @@
     "systemAudioRequired": "Die Systemaudio-Berechtigung wird benötigt, um den Ton anderer Teilnehmer aufzunehmen.",
     "openSettings": "Systemeinstellungen öffnen",
     "connectCalendar": "Kalender verbinden",
-    "connectCalendarDescription": "Sieh deine Meetings und tritt ihnen bei, ohne OpenWhispr zu verlassen.",
+    "connectCalendarDescription": "Sieh deine Meetings und tritt ihnen bei, ohne WhisprTalk zu verlassen.",
     "connectCalendarButton": "Kalender verbinden"
   },
   "cleanupPrompt": "Textbereinigung",
@@ -1546,15 +1546,15 @@
     "recheckChecking": "Wird geprüft...",
     "title": "Automatisches Einfügen",
     "usingMethodPrefix": "Verwendet",
-    "waylandClipboardDescription": "Automatisches Einfügen ist in dieser Wayland-Sitzung nicht verfügbar. OpenWhispr kopiert den Text in Ihre Zwischenablage, damit Sie ihn manuell mit Ctrl+V einfügen können.",
+    "waylandClipboardDescription": "Automatisches Einfügen ist in dieser Wayland-Sitzung nicht verfügbar. WhisprTalk kopiert den Text in Ihre Zwischenablage, damit Sie ihn manuell mit Ctrl+V einfügen können.",
     "waylandClipboardTitle": "Zwischenablage-Modus unter Wayland",
     "windowsReady": "Windows unterstützt automatisches Einfügen direkt. Keine Einrichtung erforderlich!",
-    "withoutToolPrefix": "Ohne dieses Tool kopiert OpenWhispr den Text in Ihre Zwischenablage. Sie können ihn dann manuell mit Ctrl+V einfügen.",
+    "withoutToolPrefix": "Ohne dieses Tool kopiert WhisprTalk den Text in Ihre Zwischenablage. Sie können ihn dann manuell mit Ctrl+V einfügen.",
     "wtypeCosmicTerminalsDescription": "Unter COSMIC empfangen Terminals wie Warp eingefügten Text nur über wtype. In andere Apps wird bereits ohne wtype eingefügt.",
     "wtypeFallbackDescription": "wtype ist die bevorzugte Methode für automatisches Einfügen auf diesem wlroots-Compositor. Eine Alternative ist verfügbar, kann aber weniger zuverlässig sein.",
     "xwaylandAppsOnly": "Automatisches Einfügen funktioniert nur für XWayland-Apps",
     "wlClipboardTitle": "Installieren Sie wl-clipboard, um in Wayland-Apps einzufügen",
-    "wlClipboardDescription": "Auf diesem Desktop können Wayland-Apps von OpenWhispr kopierten Text nur über wl-copy lesen. Um Diktate dort einzufügen, installieren Sie wl-clipboard:"
+    "wlClipboardDescription": "Auf diesem Desktop können Wayland-Apps von WhisprTalk kopierten Text nur über wl-copy lesen. Um Diktate dort einzufügen, installieren Sie wl-clipboard:"
   },
   "promptStudio": {
     "common": {
@@ -2262,7 +2262,7 @@
       "appearance": {
         "auto": "Auto",
         "dark": "Dunkel",
-        "description": "Steuern Sie das Erscheinungsbild von OpenWhispr",
+        "description": "Steuern Sie das Erscheinungsbild von WhisprTalk",
         "light": "Hell",
         "theme": "Design",
         "themeDescription": "Wählen Sie zwischen Hell, Dunkel oder Systemstandard",
@@ -2290,8 +2290,8 @@
         "linuxPttSetupDescription": "Ihr Benutzer benötigt Zugriff auf die Tastatureingabegeräte.",
         "linuxPttSetupNote": "Melden Sie sich nach dem Ausführen des Befehls ab und wieder an.",
         "hyprlandConfigWriteWarningTitle": "Hyprland-Tastenkombinationen werden nicht dauerhaft gespeichert",
-        "hyprlandConfigWriteWarningDescription": "OpenWhispr kann nicht in {{path}} schreiben. Deshalb bleiben Tastenkombinationen nach einem Neuladen der Hyprland-Konfiguration nicht erhalten. Stellen Sie sicher, dass die Datei existiert und beschreibbar ist.",
-        "hyprlandUnbindDescription": "Unter Hyprland beansprucht OpenWhispr die ausgewählte Tastenkombination. Jede vorhandene Hyprland-Belegung mit derselben Tastenkombination wird aufgehoben, wenn OpenWhispr seine Tastenkombination registriert."
+        "hyprlandConfigWriteWarningDescription": "WhisprTalk kann nicht in {{path}} schreiben. Deshalb bleiben Tastenkombinationen nach einem Neuladen der Hyprland-Konfiguration nicht erhalten. Stellen Sie sicher, dass die Datei existiert und beschreibbar ist.",
+        "hyprlandUnbindDescription": "Unter Hyprland beansprucht WhisprTalk die ausgewählte Tastenkombination. Jede vorhandene Hyprland-Belegung mit derselben Tastenkombination wird aufgehoben, wenn WhisprTalk seine Tastenkombination registriert."
       },
       "meetingHotkey": {
         "title": "Meeting-Modus-Hotkey",
@@ -2317,7 +2317,7 @@
       },
       "notifications": {
         "title": "Benachrichtigungen",
-        "description": "Legen Sie fest, welche Benachrichtigungen OpenWhispr anzeigen darf",
+        "description": "Legen Sie fest, welche Benachrichtigungen WhisprTalk anzeigen darf",
         "disableAll": "Alle Benachrichtigungen deaktivieren",
         "disableAllDescription": "Alles stummschalten außer Fehlermeldungen",
         "meetingDetection": "Meeting-Erkennung",
@@ -2334,14 +2334,14 @@
       },
       "startup": {
         "launchAtLogin": "Beim Anmelden starten",
-        "launchAtLoginDescription": "OpenWhispr bei der Anmeldung im Hintergrund starten",
+        "launchAtLoginDescription": "WhisprTalk bei der Anmeldung im Hintergrund starten",
         "title": "Autostart",
-        "description": "Steuern Sie das Verhalten von OpenWhispr beim Start",
+        "description": "Steuern Sie das Verhalten von WhisprTalk beim Start",
         "startMinimized": "Minimiert starten",
         "startMinimizedDescription": "Starten, ohne das Einstellungsfenster anzuzeigen",
         "needsApproval": {
           "title": "Bestätigung in den Systemeinstellungen erforderlich",
-          "description": "macOS hat OpenWhispr als Anmeldeobjekt registriert, wartet aber darauf, dass du es unter Anmeldeobjekte erlaubst.",
+          "description": "macOS hat WhisprTalk als Anmeldeobjekt registriert, wartet aber darauf, dass du es unter Anmeldeobjekte erlaubst.",
           "action": "Anmeldeobjekte öffnen"
         }
       },
@@ -2393,7 +2393,7 @@
           "group": {
             "step1Title": "Ihren Benutzer zur Gruppe input hinzufügen",
             "step2Title": "Abmelden und wieder anmelden",
-            "step2Desc": "Gruppenänderungen werden erst nach einer neuen Sitzung wirksam. Melden Sie sich ab, wieder an und öffnen Sie OpenWhispr erneut."
+            "step2Desc": "Gruppenänderungen werden erst nach einer neuen Sitzung wirksam. Melden Sie sich ab, wieder an und öffnen Sie WhisprTalk erneut."
           },
           "service": {
             "step1Title": "Dienstverzeichnis erstellen",
@@ -2417,7 +2417,7 @@
           "manualTitle": "Fügen Sie dies zu Ihrer Konfiguration hinzu",
           "manualDesc": "Selbst konfigurieren, dann neu bauen.",
           "flakeTitle": "Installation über unser flake?",
-          "flakeDesc": "Wenn Sie OpenWhispr über das flake installieren, aktiviert programs.openwhispr.enable automatisch ydotool, das uinput-Modul und die erforderlichen Gruppenmitgliedschaften.",
+          "flakeDesc": "Wenn Sie WhisprTalk über das flake installieren, aktiviert programs.openwhispr.enable automatisch ydotool, das uinput-Modul und die erforderlichen Gruppenmitgliedschaften.",
           "rebuildNote": "Führen Sie sudo nixos-rebuild switch aus, dann ab- und wieder anmelden, damit die Gruppenänderung und die /dev/uinput-Regel wirksam werden. Ersetzen Sie <you> durch Ihren Benutzernamen."
         },
         "wlCopyDesc": "Zwischenablage-Tool, aus dem Wayland-Apps auf diesem Desktop eingefügten Text lesen"
@@ -2453,7 +2453,7 @@
           },
           "installUpdate": {
             "confirmText": "Installieren & neu starten",
-            "description": "OpenWhispr startet neu, um das Update anzuwenden.",
+            "description": "WhisprTalk startet neu, um das Update anzuwenden.",
             "title": "Update installieren"
           },
           "noUpdates": {
@@ -2485,13 +2485,13 @@
     "permissions": {
       "accessibilityDescription": "Erforderlich, damit automatisches Einfügen nach der Transkription funktioniert",
       "accessibilityTitle": "Bedienungshilfen",
-      "description": "Systemberechtigungen testen und verwalten, die OpenWhispr für den ordnungsgemäßen Betrieb benötigt",
+      "description": "Systemberechtigungen testen und verwalten, die WhisprTalk für den ordnungsgemäßen Betrieb benötigt",
       "microphoneDescription": "Nimmt Ihre Stimme für Diktat und Transkription auf",
       "microphoneTitle": "Mikrofon",
       "resetAccessibility": {
-        "description": "Dadurch wird OpenWhispr aus den Bedienungshilfen-Berechtigungen entfernt. Sie müssen den Zugriff unter Systemeinstellungen > Datenschutz & Sicherheit > Bedienungshilfen erneut gewähren.",
+        "description": "Dadurch wird WhisprTalk aus den Bedienungshilfen-Berechtigungen entfernt. Sie müssen den Zugriff unter Systemeinstellungen > Datenschutz & Sicherheit > Bedienungshilfen erneut gewähren.",
         "label": "Bedienungshilfen-Berechtigungen zurücksetzen",
-        "rowDescription": "Probleme nach Neuinstallation oder Neuerstellung der App beheben, indem OpenWhispr in den Systemeinstellungen entfernt und erneut hinzugefügt wird",
+        "rowDescription": "Probleme nach Neuinstallation oder Neuerstellung der App beheben, indem WhisprTalk in den Systemeinstellungen entfernt und erneut hinzugefügt wird",
         "title": "Bedienungshilfen-Berechtigungen zurücksetzen"
       },
       "optional": "Optional",
@@ -2520,7 +2520,7 @@
       "leaderboardRequiresAccount": "Melden Sie sich an, um Ihre Teilnahme an Bestenlisten zu verwalten.",
       "leaderboardRequiresHistory": "Aktivieren Sie die Datenaufbewahrung, bevor Sie Bestenlisten beitreten.",
       "usageAnalytics": "Nutzungsanalysen",
-      "usageAnalyticsDescription": "Helfen Sie uns, OpenWhispr zu verbessern, indem Sie anonyme Leistungsdaten teilen. Wir senden niemals Transkriptionsinhalte – nur Timing- und Fehlerdaten.",
+      "usageAnalyticsDescription": "Helfen Sie uns, WhisprTalk zu verbessern, indem Sie anonyme Leistungsdaten teilen. Wir senden niemals Transkriptionsinhalte – nur Timing- und Fehlerdaten.",
       "audioRetention": "Audio-Aufbewahrung",
       "audioRetentionDescription": "Diktat-Audio lokal für erneute Transkription und Download speichern. Dateien werden nach Ablauf der Aufbewahrungsfrist automatisch gelöscht. Meeting-Audio wird niemals gespeichert.",
       "audioRetentionDisabled": "Deaktiviert",
@@ -2576,7 +2576,7 @@
     "transcription": {
       "customSetup": "Benutzerdefinierte Einrichtung",
       "customSetupDescription": "Verwenden Sie Ihren eigenen Anbieter und API-Schlüssel.",
-      "description": "Wählen Sie, wie OpenWhispr Ihre Stimme transkribiert",
+      "description": "Wählen Sie, wie WhisprTalk Ihre Stimme transkribiert",
       "modes": {
         "openwhispr": "OpenWhispr Cloud",
         "providers": "Cloud-Anbieter",
@@ -2946,7 +2946,7 @@
       "emptyStrip_one": "{{count}} Teammitglied ist der Bestenliste noch nicht beigetreten. Die Rangliste startet danach.",
       "emptyStrip_other": "{{count}} Teammitglieder sind der Bestenliste noch nicht beigetreten. Die Rangliste startet danach.",
       "copyNudge": "Erinnerung kopieren",
-      "nudgeText": "Treten Sie unter OpenWhispr → Insights der Bestenliste bei, damit wir die Team-Bestenliste sehen können.",
+      "nudgeText": "Treten Sie unter WhisprTalk → Insights der Bestenliste bei, damit wir die Team-Bestenliste sehen können.",
       "nudgeCopied": "Erinnerung kopiert",
       "nudgeCopyError": "Erinnerung konnte nicht kopiert werden",
       "joinTitle": "Sehen Sie, wo Sie bei {{scope}} stehen",
@@ -2982,7 +2982,7 @@
         "desktop_words": "Desktop-Wörter",
         "mobile_words": "Mobil-Wörter"
       },
-      "shareText": "Sehen Sie, welchen Rang ich bei OpenWhispr habe.",
+      "shareText": "Sehen Sie, welchen Rang ich bei WhisprTalk habe.",
       "shareTitle": "Bestenliste teilen",
       "shareDescription": "Kopiere oder lade diese Karte herunter oder kopiere sie, bevor du einen Beitrag öffnest.",
       "copyImage": "Bild kopieren",
@@ -3066,7 +3066,7 @@
     },
     "join": {
       "title": "Team beitreten",
-      "domainTitle": "Dein Team ist schon auf OpenWhispr",
+      "domainTitle": "Dein Team ist schon auf WhisprTalk",
       "description": "In diesen Workspaces ist jemand aus deiner E-Mail-Domain.",
       "invitedDescription": "Du wurdest zu einem Workspace eingeladen.",
       "invitedBy": "Eingeladen von {{inviter}} als {{role}}",
@@ -3192,7 +3192,7 @@
     },
     "tryAgain": "Erneut versuchen",
     "card": {
-      "brand": "OpenWhispr",
+      "brand": "WhisprTalk",
       "signalId": "Signal ID",
       "audioSignature": "Deine Audio-Signatur",
       "stop": "Stopp",
@@ -3339,7 +3339,7 @@
     },
     "structureIntro": {
       "title": "Wo Ihre Notizen gespeichert sind",
-      "description": "OpenWhispr trennt private Gedanken von gemeinsamer Arbeit, damit nur die richtigen Personen Ihre Notizen sehen.",
+      "description": "WhisprTalk trennt private Gedanken von gemeinsamer Arbeit, damit nur die richtigen Personen Ihre Notizen sehen.",
       "personal": {
         "title": "Persönlicher Bereich",
         "description": "Nur Sie können die Ordner und Notizen hier sehen."
@@ -3578,7 +3578,7 @@
       },
       "systemAudioStopped": {
         "title": "Meeting-Ton gestoppt",
-        "description": "OpenWhispr nimmt die anderen Teilnehmer nicht mehr auf. Beenden Sie die Aufnahme und starten Sie sie erneut, oder prüfen Sie Ihr Audioausgabegerät."
+        "description": "WhisprTalk nimmt die anderen Teilnehmer nicht mehr auf. Beenden Sie die Aufnahme und starten Sie sie erneut, oder prüfen Sie Ihr Audioausgabegerät."
       },
       "systemAudioQuiet": {
         "title": "Meeting-Audio ist verstummt",
@@ -3866,7 +3866,7 @@
     "clearTitle": "Wörterbuch leeren?",
     "clearDescription": "Dadurch werden alle Wörter aus deinem benutzerdefinierten Wörterbuch entfernt. Diese Aktion kann nicht rückgängig gemacht werden.",
     "addWord": "Wort hinzufügen",
-    "addPlaceholder": "Wörter durch Kommas getrennt hinzufügen – OpenWhispr, Supabase, John Snow, ARR",
+    "addPlaceholder": "Wörter durch Kommas getrennt hinzufügen – WhisprTalk, Supabase, John Snow, ARR",
     "removeWord": "{{word}} entfernen",
     "clearAll": "Alle löschen",
     "add": "Hinzufügen",
@@ -3898,7 +3898,7 @@
       "duplicate": "Ein Snippet mit diesem Auslöser existiert bereits",
       "emptyTitle": "Sag es nur",
       "emptyTitleAccent": "einmal",
-      "emptyDescription": "Sprich ein Auslösewort und OpenWhispr ersetzt es durch deinen gespeicherten Text – Links, Intros, Grußformeln, Prompts.",
+      "emptyDescription": "Sprich ein Auslösewort und WhisprTalk ersetzt es durch deinen gespeicherten Text – Links, Intros, Grußformeln, Prompts.",
       "new": "Neues Snippet",
       "examples": {
         "linkedinTrigger": "Mein LinkedIn",
@@ -3920,7 +3920,7 @@
     "submitBug": "Fehler melden"
   },
   "postMigration": {
-    "title": "Willkommen zurück bei OpenWhispr",
+    "title": "Willkommen zurück bei WhisprTalk",
     "description": "Deine Notizen und Einstellungen wurden aus der vorherigen Version übernommen. macOS behandelt das hier allerdings als neue App, daher müssen ein paar Berechtigungen erneut erteilt werden.",
     "done": "Fertig",
     "remindLater": "Später erinnern"
@@ -3949,11 +3949,11 @@
     "cudaDescription": "CUDA-Beschleunigung für unterstützte NVIDIA-GPUs. Erfordert einen aktuellen kompatiblen NVIDIA-Treiber.",
     "vulkanDescription": "Vulkan-Beschleunigung für kompatible AMD-, Intel- und NVIDIA-GPUs.",
     "activationFailed": "GPU-Beschleunigung nicht verfügbar",
-    "activationFailedDescription": "OpenWhispr verwendet die CPU-Transkription.",
-    "reasoningActivationFailedDescription": "OpenWhispr verwendet die CPU-Verarbeitung.",
+    "activationFailedDescription": "WhisprTalk verwendet die CPU-Transkription.",
+    "reasoningActivationFailedDescription": "WhisprTalk verwendet die CPU-Verarbeitung.",
     "retryActivation": "GPU-Beschleunigung erneut versuchen",
     "redownloadNeeded": "GPU-Paket muss erneut heruntergeladen werden",
-    "redownloadNeededDescription": "Diese Version von OpenWhispr kann dein installiertes GPU-Paket nicht verwenden. Lade es erneut herunter, um die GPU-Beschleunigung wieder einzuschalten.",
+    "redownloadNeededDescription": "Diese Version von WhisprTalk kann dein installiertes GPU-Paket nicht verwenden. Lade es erneut herunter, um die GPU-Beschleunigung wieder einzuschalten.",
     "redownloadButton": "GPU-Paket erneut herunterladen",
     "downloadFailed": "Das GPU-Paket konnte nicht heruntergeladen werden.",
     "remove": "Entfernen",
@@ -3974,11 +3974,11 @@
       "undo": "Rückgängig",
       "accessibilityMissing": {
         "title": "Bedienungshilfen-Berechtigungen erforderlich",
-        "description": "OpenWhispr benötigt Bedienungshilfen-Berechtigungen, um Ihren Hotkey zu erkennen und Text einzufügen. Bitte aktivieren Sie diese in der Systemsteuerung."
+        "description": "WhisprTalk benötigt Bedienungshilfen-Berechtigungen, um Ihren Hotkey zu erkennen und Text einzufügen. Bitte aktivieren Sie diese in der Systemsteuerung."
       },
       "gpuFallback": {
         "title": "GPU-Beschleunigung nicht verfügbar",
-        "description": "OpenWhispr verwendet die CPU-Transkription.",
+        "description": "WhisprTalk verwendet die CPU-Transkription.",
         "retry": "GPU erneut versuchen"
       },
       "gpuPackMigration": {
@@ -4023,7 +4023,7 @@
       "visionModelDescription": "Leitet Befehle mit Screenshot an ein anderes Modell mit Bildverständnis weiter.",
       "permissionTitle": "Bildschirmaufnahme",
       "permissionDescription": "macOS benötigt die Berechtigung zur Bildschirmaufnahme, um Ihren Bildschirm zu erfassen.",
-      "relaunchHint": "Die Bildschirmaufnahme wurde erteilt, während OpenWhispr lief. Beenden und öffnen Sie OpenWhispr erneut, um Screenshots aufzunehmen."
+      "relaunchHint": "Die Bildschirmaufnahme wurde erteilt, während WhisprTalk lief. Beenden und öffnen Sie WhisprTalk erneut, um Screenshots aufzunehmen."
     },
     "prompt": {
       "title": "Assistent-Prompt",
@@ -4143,7 +4143,7 @@
       "disconnectConfirm": "{{email}} trennen?",
       "disconnectDescription": "Besprechungsnotizen werden von diesem Kalender nicht mehr aufgezeichnet.",
       "systemAudioRequired": "Systemaudio-Berechtigung erforderlich",
-      "systemAudioDescription": "Zum Transkribieren von Meetings benötigt OpenWhispr die Systemaudio-Berechtigung, um den Ton anderer Teilnehmer aufzunehmen. Wir nehmen Ihren Bildschirm nie auf. Sie werden zu den Systemeinstellungen weitergeleitet, um diese zu aktivieren.",
+      "systemAudioDescription": "Zum Transkribieren von Meetings benötigt WhisprTalk die Systemaudio-Berechtigung, um den Ton anderer Teilnehmer aufzunehmen. Wir nehmen Ihren Bildschirm nie auf. Sie werden zu den Systemeinstellungen weitergeleitet, um diese zu aktivieren.",
       "openSettings": "Systemeinstellungen öffnen",
       "connectFailed": "Verbindung fehlgeschlagen",
       "connectFailedDescription": "Beim Verbinden mit Google Calendar ist ein Fehler aufgetreten. Bitte versuche es erneut."
@@ -4171,10 +4171,10 @@
       "disconnectConfirm": "Apple Kalender trennen?",
       "disconnectDescription": "Besprechungsnotizen werden von deinem Apple Kalender nicht mehr aufgezeichnet.",
       "permissionDenied": "Kalenderzugriff erforderlich",
-      "permissionDeniedDescription": "OpenWhispr benötigt Kalenderzugriff, um Besprechungen zu erkennen. Aktiviere OpenWhispr in den Systemeinstellungen unter Datenschutz & Sicherheit → Kalender.",
+      "permissionDeniedDescription": "WhisprTalk benötigt Kalenderzugriff, um Besprechungen zu erkennen. Aktiviere WhisprTalk in den Systemeinstellungen unter Datenschutz & Sicherheit → Kalender.",
       "openSettings": "Systemeinstellungen öffnen",
       "connectFailed": "Verbindung fehlgeschlagen",
-      "connectFailedDescription": "Beim Verbinden mit Calendar.app ist ein Fehler aufgetreten. Starte OpenWhispr neu und versuche es erneut."
+      "connectFailedDescription": "Beim Verbinden mit Calendar.app ist ein Fehler aufgetreten. Starte WhisprTalk neu und versuche es erneut."
     },
     "api": {
       "description": "Verwalte API-Schlüssel für programmatischen Zugriff",
@@ -4184,13 +4184,13 @@
     },
     "mcp": {
       "description": "Chatte, suche und arbeite mit deinen Notizen in Claude, ChatGPT und Cursor.",
-      "step1": "Füge OpenWhispr MCP in deinem KI-Tool mit der öffentlichen URL hinzu",
-      "proRequired": "Upgrade auf einen kostenpflichtigen Plan, um OpenWhispr mit Claude, ChatGPT und Cursor zu verbinden.",
+      "step1": "Füge WhisprTalk MCP in deinem KI-Tool mit der öffentlichen URL hinzu",
+      "proRequired": "Upgrade auf einen kostenpflichtigen Plan, um WhisprTalk mit Claude, ChatGPT und Cursor zu verbinden.",
       "worksWith": "Funktioniert mit",
       "copyUrl": "MCP-URL kopieren",
       "copied": "Kopiert",
       "oauthTitle": "Mit OAuth anmelden",
-      "oauthDescription": "Füge die Server-URL in einem Client mit OAuth-Unterstützung hinzu. Melde dich dann bei OpenWhispr an und erlaube den Zugriff. Kein API-Schlüssel nötig.",
+      "oauthDescription": "Füge die Server-URL in einem Client mit OAuth-Unterstützung hinzu. Melde dich dann bei WhisprTalk an und erlaube den Zugriff. Kein API-Schlüssel nötig.",
       "apiKeyTitle": "API-Schlüssel verwenden",
       "apiKeyDescription": "Erstelle für Clients, die Anfrage-Header akzeptieren, einen persönlichen API-Schlüssel mit den benötigten Berechtigungen und verwende den folgenden Header."
     },
@@ -4201,7 +4201,7 @@
       "local": {
         "label": "Lokal",
         "freeBadge": "Kostenlos",
-        "description": "Greife direkt auf deine lokalen Notizen zu. Kein Login oder API-Key — funktioniert, solange OpenWhispr läuft."
+        "description": "Greife direkt auf deine lokalen Notizen zu. Kein Login oder API-Key — funktioniert, solange WhisprTalk läuft."
       },
       "cloud": {
         "label": "Cloud",
@@ -4221,7 +4221,7 @@
       "upgrade": "Upgrade"
     },
     "notABot": {
-      "description": "OpenWhispr erfasst Audio direkt von deinem System — es nimmt niemals als Teilnehmer an deinen Meetings teil. Verbinde einfach deinen Kalender und mach Notizen wie gewohnt."
+      "description": "WhisprTalk erfasst Audio direkt von deinem System — es nimmt niemals als Teilnehmer an deinen Meetings teil. Verbinde einfach deinen Kalender und mach Notizen wie gewohnt."
     },
     "nav": {
       "label": "Integrationsbereiche",
@@ -4276,7 +4276,7 @@
         "reconnect_needed": "Slack muss in den Einstellungen erneut verbunden werden.",
         "connection_changed": "Die Slack-Verbindung hat sich vor dem Senden geändert, daher wurde nichts gesendet.",
         "rate_limited": "Slack ist gerade ausgelastet. Versuche es in Kürze erneut.",
-        "missing_scope": "OpenWhispr hat keine Berechtigung, dort zu posten. Slack in den Einstellungen erneut verbinden.",
+        "missing_scope": "WhisprTalk hat keine Berechtigung, dort zu posten. Slack in den Einstellungen erneut verbinden.",
         "msg_too_long": "Die Nachricht ist zu lang für Slack (maximal 12.000 Zeichen nach der Formatierung).",
         "no_text": "Die Nachricht ist leer.",
         "network": "Slack war nicht erreichbar. Es wurde nichts gesendet.",
@@ -4338,7 +4338,7 @@
           "wrong_workspace": "Dieses Issue liegt in einem anderen Linear-Workspace. Es wurde nichts gesendet.",
           "invalid_reference": "Das ist kein Linear-Issue. Es wurde nichts gesendet.",
           "refused": "Linear hat die Anfrage abgelehnt. Es wurde nichts gesendet.",
-          "unknown_action": "OpenWhispr kann das in Linear nicht. Es wurde nichts gesendet.",
+          "unknown_action": "WhisprTalk kann das in Linear nicht. Es wurde nichts gesendet.",
           "generic": "Etwas ist schiefgelaufen. Es wurde nichts an Linear gesendet."
         }
       },
@@ -4436,19 +4436,19 @@
         "oauth_denied": "Slack wurde nicht verbunden, da der Zugriff nicht erlaubt wurde.",
         "oauth_timeout": "Die Verbindung hat zu lange gedauert. Versuche es erneut.",
         "oauth_state_mismatch": "Dieser Anmeldelink war veraltet. Versuche es erneut.",
-        "ports_busy": "Eine andere App verwendet die Ports, die OpenWhispr zum Verbinden benötigt. Schließe sie und versuche es erneut.",
+        "ports_busy": "Eine andere App verwendet die Ports, die WhisprTalk zum Verbinden benötigt. Schließe sie und versuche es erneut.",
         "token_exchange_failed": "Slack hat die Verbindung nicht abgeschlossen. Versuche es erneut.",
         "not_configured": "Slack ist in dieser Version nicht verfügbar.",
         "connection_changed": "Dein Konto oder die Slack-Verbindung hat sich während der Verbindung geändert. Versuche es erneut.",
-        "signed_out": "Melde dich bei OpenWhispr an, um Slack zu verbinden.",
+        "signed_out": "Melde dich bei WhisprTalk an, um Slack zu verbinden.",
         "policy_blocked": "Konnektoren wurden von deiner Organisation deaktiviert.",
         "policy_unavailable": "Die Einstellungen deiner Organisation konnten nicht geprüft werden. Versuche es erneut."
       },
       "browser": {
         "connectedTitle": "Slack ist verbunden",
-        "connectedBody": "Du kannst diesen Tab schließen und zu OpenWhispr zurückkehren.",
+        "connectedBody": "Du kannst diesen Tab schließen und zu WhisprTalk zurückkehren.",
         "failedTitle": "Slack wurde nicht verbunden",
-        "failedBody": "Kehre zu OpenWhispr zurück, um es erneut zu versuchen."
+        "failedBody": "Kehre zu WhisprTalk zurück, um es erneut zu versuchen."
       }
     },
     "github": {
@@ -4463,7 +4463,7 @@
       "connectedAs_unknown": "Verbunden als {{account}}",
       "needsReconnect": "GitHub muss erneut verbunden werden.",
       "reviewOnGithub": "Auf GitHub prüfen",
-      "disconnectedHint": "Von diesem Computer getrennt. GitHub behält die Autorisierung von OpenWhispr, bis du sie dort entfernst.",
+      "disconnectedHint": "Von diesem Computer getrennt. GitHub behält die Autorisierung von WhisprTalk, bis du sie dort entfernst.",
       "errors": {
         "connect_failed": "GitHub konnte nicht verbunden werden. Versuche es erneut.",
         "disconnect_failed": "GitHub konnte nicht getrennt werden. Versuche es erneut.",
@@ -4471,7 +4471,7 @@
         "token_exchange_failed": "GitHub hat die Verbindung nicht abgeschlossen. Versuche es erneut.",
         "not_configured": "GitHub ist in dieser Version nicht verfügbar.",
         "connection_changed": "Dein Konto oder die GitHub-Verbindung hat sich während der Verbindung geändert. Versuche es erneut.",
-        "signed_out": "Melde dich bei OpenWhispr an, um GitHub zu verbinden.",
+        "signed_out": "Melde dich bei WhisprTalk an, um GitHub zu verbinden.",
         "policy_blocked": "Konnektoren wurden von deiner Organisation deaktiviert.",
         "policy_unavailable": "Die Einstellungen deiner Organisation konnten nicht geprüft werden. Versuche es erneut.",
         "code_expired": "Der Code ist abgelaufen. Versuche es erneut.",
@@ -4497,32 +4497,32 @@
       "connect": "Verbinden",
       "reconnect": "Erneut verbinden",
       "disconnect": "Trennen",
-      "connecting": "Schließe die Verbindung in deinem Browser ab… Wenn Google den Zugriff als blockiert meldet, muss der Google-Administrator deiner Organisation OpenWhispr zulassen.",
+      "connecting": "Schließe die Verbindung in deinem Browser ab… Wenn Google den Zugriff als blockiert meldet, muss der Google-Administrator deiner Organisation WhisprTalk zulassen.",
       "connectedAs": "Verbunden als {{account}}",
       "needsReconnect": "Gmail muss erneut verbunden werden.",
-      "grantKept": "Getrennt. Google Kalender nutzt dieselbe Google-Berechtigung, daher bleibt OpenWhispr in deinem Google-Konto aufgeführt, bis du auch Google Kalender trennst.",
+      "grantKept": "Getrennt. Google Kalender nutzt dieselbe Google-Berechtigung, daher bleibt WhisprTalk in deinem Google-Konto aufgeführt, bis du auch Google Kalender trennst.",
       "errors": {
         "connect_failed": "Gmail konnte nicht verbunden werden. Versuche es erneut.",
         "disconnect_failed": "Gmail konnte nicht getrennt werden. Versuche es erneut.",
         "oauth_denied": "Gmail wurde nicht verbunden, da der Zugriff nicht erlaubt wurde.",
-        "oauth_timeout": "Die Verbindung hat zu lange gedauert. Wenn Google den Zugriff als blockiert gemeldet hat, bitte den Google-Administrator deiner Organisation, OpenWhispr zuzulassen. Andernfalls versuche es erneut.",
+        "oauth_timeout": "Die Verbindung hat zu lange gedauert. Wenn Google den Zugriff als blockiert gemeldet hat, bitte den Google-Administrator deiner Organisation, WhisprTalk zuzulassen. Andernfalls versuche es erneut.",
         "oauth_state_mismatch": "Dieser Anmeldelink war veraltet. Versuche es erneut.",
-        "ports_busy": "Eine andere App verwendet die Ports, die OpenWhispr zum Verbinden benötigt. Schließe sie und versuche es erneut.",
+        "ports_busy": "Eine andere App verwendet die Ports, die WhisprTalk zum Verbinden benötigt. Schließe sie und versuche es erneut.",
         "token_exchange_failed": "Google hat die Verbindung nicht abgeschlossen. Versuche es erneut.",
         "not_configured": "Gmail ist in dieser Version nicht verfügbar.",
         "connection_changed": "Dein Konto oder die Gmail-Verbindung hat sich während der Verbindung geändert. Versuche es erneut.",
-        "signed_out": "Melde dich bei OpenWhispr an, um Gmail zu verbinden.",
+        "signed_out": "Melde dich bei WhisprTalk an, um Gmail zu verbinden.",
         "policy_blocked": "Konnektoren wurden von deiner Organisation deaktiviert.",
         "policy_unavailable": "Die Einstellungen deiner Organisation konnten nicht geprüft werden. Versuche es erneut.",
         "permission_not_granted": "Gmail wurde nicht verbunden, da die Berechtigung zum Senden von E-Mails nicht erteilt wurde. Verbinde erneut und lass diese Berechtigung aktiviert.",
         "email_not_verified": "Google hat die E-Mail-Adresse dieses Kontos nicht bestätigt, daher wurde Gmail nicht verbunden.",
-        "domain_policy": "Der Google-Administrator deiner Organisation hat diese App blockiert. Bitte ihn, OpenWhispr zuzulassen."
+        "domain_policy": "Der Google-Administrator deiner Organisation hat diese App blockiert. Bitte ihn, WhisprTalk zuzulassen."
       },
       "browser": {
         "connectedTitle": "Gmail ist verbunden",
-        "connectedBody": "Du kannst diesen Tab schließen und zu OpenWhispr zurückkehren.",
+        "connectedBody": "Du kannst diesen Tab schließen und zu WhisprTalk zurückkehren.",
         "failedTitle": "Gmail wurde nicht verbunden",
-        "failedBody": "Kehre zu OpenWhispr zurück, um es erneut zu versuchen."
+        "failedBody": "Kehre zu WhisprTalk zurück, um es erneut zu versuchen."
       }
     },
     "linear": {
@@ -4540,20 +4540,20 @@
         "oauth_denied": "Linear wurde nicht verbunden, da der Zugriff nicht erlaubt wurde.",
         "oauth_timeout": "Die Verbindung hat zu lange gedauert. Versuche es erneut.",
         "oauth_state_mismatch": "Dieser Anmeldelink war veraltet. Versuche es erneut.",
-        "ports_busy": "Eine andere App verwendet die Ports, die OpenWhispr zum Verbinden benötigt. Schließe sie und versuche es erneut.",
+        "ports_busy": "Eine andere App verwendet die Ports, die WhisprTalk zum Verbinden benötigt. Schließe sie und versuche es erneut.",
         "token_exchange_failed": "Linear hat die Verbindung nicht abgeschlossen. Versuche es erneut.",
         "not_configured": "Linear ist in dieser Version nicht verfügbar.",
         "connection_changed": "Dein Konto oder die Linear-Verbindung hat sich während der Verbindung geändert. Versuche es erneut.",
-        "signed_out": "Melde dich bei OpenWhispr an, um Linear zu verbinden.",
+        "signed_out": "Melde dich bei WhisprTalk an, um Linear zu verbinden.",
         "policy_blocked": "Konnektoren wurden von deiner Organisation deaktiviert.",
         "policy_unavailable": "Die Einstellungen deiner Organisation konnten nicht geprüft werden. Versuche es erneut.",
         "permission_not_granted": "Linear wurde nicht verbunden, da nicht alle Berechtigungen erteilt wurden. Verbinde erneut und erlaube alle."
       },
       "browser": {
         "connectedTitle": "Linear ist verbunden",
-        "connectedBody": "Du kannst diesen Tab schließen und zu OpenWhispr zurückkehren.",
+        "connectedBody": "Du kannst diesen Tab schließen und zu WhisprTalk zurückkehren.",
         "failedTitle": "Linear wurde nicht verbunden",
-        "failedBody": "Kehre zu OpenWhispr zurück, um es erneut zu versuchen."
+        "failedBody": "Kehre zu WhisprTalk zurück, um es erneut zu versuchen."
       },
       "notes": {
         "priority": {
@@ -4809,7 +4809,7 @@
   },
   "permissionsGate": {
     "title": "Berechtigungen erforderlich",
-    "description": "OpenWhispr benötigt einige Berechtigungen, um auf diesem Computer zu funktionieren.",
+    "description": "WhisprTalk benötigt einige Berechtigungen, um auf diesem Computer zu funktionieren.",
     "continue": "Weiter"
   },
   "embeddedChat": {
@@ -5004,20 +5004,20 @@
       }
     },
     "setup": {
-      "introTitle": "Lassen Sie OpenWhispr\nso schreiben, wie Sie sprechen",
+      "introTitle": "Lassen Sie WhisprTalk\nso schreiben, wie Sie sprechen",
       "introDescription": "Legen Sie Ton und Stil für verschiedene Apps fest.",
       "personalize": "Jetzt anpassen",
-      "cleanupOffTitle": "Bringen Sie OpenWhispr\nIhren Stil bei",
+      "cleanupOffTitle": "Bringen Sie WhisprTalk\nIhren Stil bei",
       "cleanupOffDescription": "Aktivieren Sie die Textbereinigung und legen Sie dann Ton und Stil für verschiedene Apps fest.",
       "stepDescription": "Wählen Sie das Beispiel, das am meisten nach Ihnen klingt.",
       "progress": "Schritt {{current}} von {{total}}",
       "finish": "Fertig"
     },
     "banner": {
-      "title": "Bringen Sie OpenWhispr bei, wie Sie schreiben",
+      "title": "Bringen Sie WhisprTalk bei, wie Sie schreiben",
       "description": "Legen Sie Ihren bevorzugten Ton für Arbeit, Freunde und alles dazwischen fest.",
       "start": "Jetzt starten",
-      "cleanupOffTitle": "Bringen Sie OpenWhispr Ihren Stil bei",
+      "cleanupOffTitle": "Bringen Sie WhisprTalk Ihren Stil bei",
       "cleanupOffDescription": "Aktivieren Sie die Textbereinigung und wählen Sie Ihren Ton für jede App.",
       "notNow": "Nicht jetzt",
       "decoration": "Ihre Worte sollten nach Ihnen klingen. Egal, was Sie schreiben und für wen."

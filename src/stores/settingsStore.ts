@@ -1531,7 +1531,7 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
     isBrowser ? localStorage.getItem("uiLanguage") || i18n.language : null
   ),
   useLocalWhisper: readBoolean("useLocalWhisper", false),
-  whisperModel: readString("whisperModel", "base"),
+  whisperModel: readString("whisperModel", "turbo"),
   localTranscriptionProvider: readLocalProvider("localTranscriptionProvider"),
   parakeetModel: readString("parakeetModel", ""),
   cohereModel: readString("cohereModel", DEFAULT_COHERE_MODEL),
