@@ -4990,6 +4990,13 @@
       "very_casual": "Very Casual",
       "excited": "Excited!"
     },
+    "formats": {
+      "label": "Format",
+      "ai": "AI cleanup",
+      "raw": "Raw transcript",
+      "casual": "Casual (no caps, no final period)",
+      "lowercase": "All lowercase"
+    },
     "samples": {
       "personal": {
         "formal": "Hey, are you around this evening? I was thinking we could grab a coffee around 6. Let me know.",

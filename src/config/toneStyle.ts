@@ -24,17 +24,40 @@ export const DEFAULT_TONE_STYLES: ToneStyles = {
   other: "formal",
 };
 
+// How cleanup shapes the text for the app: `ai` is the usual cleanup, `raw`
+// skips the cleanup model (dictionary and snippets still apply), `casual` adds
+// a casual-formatting sentence to the cleanup prompt, `lowercase` lowercases
+// the cleaned-up text.
+export const DICTATION_FORMATS = ["ai", "raw", "casual", "lowercase"] as const;
+export type DictationFormat = (typeof DICTATION_FORMATS)[number];
+
+export type ToneFormats = Record<ToneAppCategory, DictationFormat>;
+
+export const DEFAULT_TONE_FORMATS: ToneFormats = {
+  personal: "ai",
+  work: "ai",
+  email: "ai",
+  other: "ai",
+};
+
 // Words dictated before the setup dialog opens by itself on Home.
 export const TONE_STYLE_PROMPT_MIN_WORDS = 70;
 
-/** What one dictation's cleanup is told: the app's category and the tone picked for it. */
+/**
+ * What one dictation's cleanup is told: the app's category, the tone picked for
+ * it and, unless it is the usual `ai` cleanup, the format picked for it.
+ */
 export interface DictationToneStyle {
   appCategory: ToneAppCategory;
   tone: DictationTone;
+  format?: DictationFormat;
 }
 
-/** Reads the stored JSON, keeping only tones offered for each category. */
-export function normalizeToneStyles(value: string): ToneStyles {
+function readPerCategory<T extends string>(
+  value: string,
+  offered: (category: ToneAppCategory) => readonly T[],
+  defaults: Record<ToneAppCategory, T>
+): Record<ToneAppCategory, T> {
   let parsed: unknown;
   try {
     parsed = JSON.parse(value);
@@ -44,15 +67,32 @@ export function normalizeToneStyles(value: string): ToneStyles {
   const stored = (parsed && typeof parsed === "object" ? parsed : {}) as Record<string, unknown>;
   return Object.fromEntries(
     TONE_APP_CATEGORIES.map((category) => {
-      const tone = stored[category];
-      return [
-        category,
-        TONE_OPTIONS[category].includes(tone as DictationTone)
-          ? tone
-          : DEFAULT_TONE_STYLES[category],
-      ];
+      const pick = stored[category];
+      return [category, offered(category).includes(pick as T) ? pick : defaults[category]];
     })
-  ) as ToneStyles;
+  ) as Record<ToneAppCategory, T>;
+}
+
+/** Reads the stored JSON, keeping only tones offered for each category. */
+export function normalizeToneStyles(value: string): ToneStyles {
+  return readPerCategory(value, (category) => TONE_OPTIONS[category], DEFAULT_TONE_STYLES);
+}
+
+/** Reads the stored JSON, keeping only known formats. */
+export function normalizeToneFormats(value: string): ToneFormats {
+  return readPerCategory(value, () => DICTATION_FORMATS, DEFAULT_TONE_FORMATS);
+}
+
+export function resolveDictationFormat(
+  toneFormats: ToneFormats,
+  appCategory: ToneAppCategory | null
+): DictationFormat {
+  return toneFormats[appCategory ?? "other"];
+}
+
+/** Lowercases cleaned-up text when the app's format asks for it. */
+export function applyDictationFormat(text: string, toneStyle?: DictationToneStyle | null) {
+  return toneStyle?.format === "lowercase" ? text.toLowerCase() : text;
 }
 
 export function resolveDictationToneStyle(

@@ -33,6 +33,11 @@ const APP_CATEGORY_INSTRUCTIONS: Partial<Record<ToneAppCategory, string>> = {
     "The text is an email. Keep a dictated greeting, paragraphs and sign-off on their own lines, and never add a greeting or sign-off that was not dictated.",
 };
 
+// The `casual` format, on top of the tone. Desktop-only: the server has no
+// field for it, so Cloud cleanup keeps the tone alone.
+const CASUAL_FORMAT_INSTRUCTION =
+  'Format it casually: capitalize only proper nouns and the word "I", and when the text is a single sentence, end it without a period.';
+
 const TONE_PRIORITY_INSTRUCTION =
   "This tone overrides any instruction to keep the speaker's tone, voice, style, wording or formality, and it sets capitalization and punctuation; names, acronyms and dictionary terms keep their exact spelling and capitalization. It never changes meaning or intent. Every other cleanup rule still applies.";
 
@@ -42,6 +47,7 @@ export function appendToneStyleSuffix(prompt: string, toneStyle?: DictationToneS
   const instruction = [
     APP_CATEGORY_INSTRUCTIONS[toneStyle.appCategory],
     toneInstruction(toneStyle.tone),
+    toneStyle.format === "casual" ? CASUAL_FORMAT_INSTRUCTION : "",
     TONE_PRIORITY_INSTRUCTION,
   ]
     .filter(Boolean)

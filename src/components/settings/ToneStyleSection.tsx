@@ -8,7 +8,15 @@ import { useToast } from "../ui/useToast";
 import { cn } from "../lib/utils";
 import { useSettingsStore } from "../../stores/settingsStore";
 import { dismissToneStyleBanner } from "../../hooks/useToneStylePrompt";
-import { TONE_APP_CATEGORIES, TONE_OPTIONS, type ToneStyles } from "../../config/toneStyle";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import {
+  DICTATION_FORMATS,
+  TONE_APP_CATEGORIES,
+  TONE_OPTIONS,
+  type DictationFormat,
+  type ToneFormats,
+  type ToneStyles,
+} from "../../config/toneStyle";
 import { AppMarkStack } from "../toneStyle/toneStyleVisuals";
 import { CATEGORY_APP_MARKS } from "../toneStyle/appMarks";
 import { dictationCleanupHasModel, turnOnDictationCleanup } from "../toneStyle/dictationCleanup";
@@ -21,15 +29,22 @@ export default function ToneStyleSection({ onOpenCleanupSettings }: ToneStyleSec
   const { t } = useTranslation();
   const { toast } = useToast();
   const savedStyles = useSettingsStore((s) => s.toneStyles);
+  const savedFormats = useSettingsStore((s) => s.toneFormats);
   const toneStyleEnabled = useSettingsStore((s) => s.toneStyleEnabled);
   const useCleanupModel = useSettingsStore((s) => s.useCleanupModel);
   const [draft, setDraft] = useState<ToneStyles>(savedStyles);
+  const [formatDraft, setFormatDraft] = useState<ToneFormats>(savedFormats);
   const canSave =
     toneStyleEnabled &&
-    TONE_APP_CATEGORIES.some((category) => draft[category] !== savedStyles[category]);
+    TONE_APP_CATEGORIES.some(
+      (category) =>
+        draft[category] !== savedStyles[category] ||
+        formatDraft[category] !== savedFormats[category]
+    );
 
   const save = () => {
     useSettingsStore.getState().setToneStyles(draft);
+    useSettingsStore.getState().setToneFormats(formatDraft);
     toast({ title: t("toneStyle.settings.saved") });
   };
 
@@ -124,6 +139,40 @@ export default function ToneStyleSection({ onOpenCleanupSettings }: ToneStyleSec
                       </button>
                     );
                   })}
+                </div>
+                {/* How cleanup shapes the text for this kind of app. */}
+                <div className="mt-3 flex items-center justify-between gap-4">
+                  <span className="text-[13px] text-muted-foreground">
+                    {t("toneStyle.formats.label")}
+                  </span>
+                  <Select
+                    value={formatDraft[category]}
+                    disabled={!toneStyleEnabled}
+                    onValueChange={(format) =>
+                      setFormatDraft((current) => ({
+                        ...current,
+                        [category]: format as DictationFormat,
+                      }))
+                    }
+                  >
+                    <SelectTrigger
+                      aria-label={`${title}: ${t("toneStyle.formats.label")}`}
+                      className="h-7 w-44 shrink-0 rounded-lg px-2.5 text-xs [&>svg]:h-3 [&>svg]:w-3"
+                    >
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {DICTATION_FORMATS.map((format) => (
+                        <SelectItem
+                          key={format}
+                          value={format}
+                          className="rounded-md py-1.5 pe-7 ps-2.5 text-xs"
+                        >
+                          {t(`toneStyle.formats.${format}`)}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
               </section>
             );
