@@ -29,6 +29,7 @@ import { useRequiredLocalModels } from "../hooks/useRequiredLocalModels";
 import { usePolicyStore } from "../stores/policyStore";
 import { isAgentAllowed, isScreenContextAllowed } from "../stores/policyRules";
 import { useSettingsStore } from "../stores/settingsStore";
+import { WHISPRTALK_CLOUD_CHAT_MODEL, WHISPRTALK_CLOUD_URL } from "../config/constants";
 import { getDefaultHotkey, parseHotkeyList, serializeHotkeyList } from "../utils/hotkeys";
 import {
   DEFAULT_ASSISTANT_ONBOARDING_HOTKEY,
@@ -725,9 +726,43 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
   );
 
   const handleSetupSelection = useCallback(
-    async (mode: Exclude<OnboardingSetupMode, null>, options?: { selfHosted?: boolean }) => {
+    async (
+      mode: Exclude<OnboardingSetupMode, null>,
+      options?: { selfHosted?: boolean; whisprTalkCloud?: boolean }
+    ) => {
       setSetupMode(mode);
       setSelfHostedRequested(!!options?.selfHosted);
+      if (mode === "cloud" && options?.whisprTalkCloud) {
+        // The user's own Cloudflare Worker: key-less Self-Hosted transcription
+        // (the token is in the URL) for every scope, and the same endpoint as a
+        // Custom reasoning provider. Finishes as "byok" so no OpenWhispr Cloud
+        // health check runs.
+        settingsStore.switchCloudTranscriptionProvider("dictation", "custom");
+        settingsStore.setRemoteTranscriptionUrl(WHISPRTALK_CLOUD_URL);
+        settingsStore.setRemoteTranscriptionModel("");
+        settingsStore.setRemoteTranscriptionType("openai-compatible");
+        settingsStore.setCloudTranscriptionForAllScopes({
+          useLocalWhisper: false,
+          cloudTranscriptionMode: "byok",
+          cloudTranscriptionProvider: "custom",
+        });
+        if (agentAllowed) {
+          settingsStore.setCloudReasoningForAllScopes({
+            cleanupCloudMode: "byok",
+            cleanupProvider: "custom",
+            cleanupModel: WHISPRTALK_CLOUD_CHAT_MODEL,
+            cleanupCloudBaseUrl: WHISPRTALK_CLOUD_URL,
+            // The Worker ignores the bearer; the Custom provider just needs one.
+            cleanupCustomApiKey: "whisprtalk",
+            useCleanupModel: true,
+            useDictationAgent: true,
+          });
+        } else {
+          settingsStore.updateCleanupSettings({ useCleanupModel: false });
+        }
+        await finalizeOnboarding("byok");
+        return;
+      }
       if (mode === "cloud") {
         settingsStore.setCloudTranscriptionForAllScopes({
           useLocalWhisper: false,

@@ -331,15 +331,15 @@
           "description": "Your workspace policy does not allow a complete transcription and AI setup. Contact your administrator."
         },
         "cloud": {
-          "title": "OpenWhispr Cloud",
-          "description": "Get 2,000 free words each week. Your settings stay synced across devices.",
-          "continue": "Continue for free",
-          "signIn": "Sign in to use Cloud",
+          "title": "WhisprTalk Cloud",
+          "description": "Your own Cloudflare account. Whisper large-v3-turbo and Llama 3.3, about 3.5 hours of audio a day on the free plan.",
+          "continue": "Use my Cloudflare",
+          "signIn": "Use my Cloudflare",
           "features": {
-            "fast": "Fastest, no setup required",
-            "privacy": "Clear privacy and zero data-retention",
-            "sync": "Settings sync across devices",
-            "features": "AI features for notes and actions"
+            "fast": "Fast, nothing to download",
+            "privacy": "Only your token can reach it",
+            "sync": "Same endpoint for Mac and iPhone, shared transcript log",
+            "features": "AI cleanup and notes through Workers AI"
           }
         },
         "byok": {

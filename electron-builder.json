@@ -35,6 +35,9 @@
     "src/utils/**/*",
     "src/updater.js",
     "src/components.json",
+    "!openwhispr-mobile/**",
+    "!cloudflare-worker/**",
+    "!docs/**",
     "!node_modules/.cache/**/*",
     "!src/node_modules/**/*",
     "!**/node_modules/electron/**",
@@ -167,7 +170,8 @@
       "NSAccessibilityUsageDescription": "WhisprTalk needs accessibility permissions to paste transcribed text into other applications.",
       "NSCalendarsUsageDescription": "WhisprTalk reads your calendar to detect upcoming meetings and link meeting notes to events.",
       "NSCalendarsFullAccessUsageDescription": "WhisprTalk reads your calendar to detect upcoming meetings and link meeting notes to events."
-    }
+    },
+    "identity": null
   },
   "win": {
     "target": ["nsis"],

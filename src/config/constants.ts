@@ -162,6 +162,15 @@ export const CACHE_CONFIG = {
 // OpenWhispr Cloud API
 export const OPENWHISPR_API_URL = (env.VITE_OPENWHISPR_API_URL as string) || "";
 
+// WhisprTalk Cloud: the user's own Cloudflare Worker (cloudflare-worker/), an
+// OpenAI-compatible base URL whose last path segment is the access token. Set
+// VITE_WHISPRTALK_CLOUD_URL in the git-ignored .env.local (repo root) at build time.
+export const WHISPRTALK_CLOUD_URL = ((env.VITE_WHISPRTALK_CLOUD_URL as string) || "").replace(
+  /\/+$/,
+  ""
+);
+export const WHISPRTALK_CLOUD_CHAT_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+
 // Retry Configuration
 export const RETRY_CONFIG = {
   MAX_RETRIES: 3,

@@ -1,7 +1,15 @@
 {
   "name": "whisprtalk-asr",
   "main": "src/index.js",
+  "account_id": "d356af3ca497ac6719d75f85edb82c66",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
-  "ai": { "binding": "AI" }
+  "ai": { "binding": "AI" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "whisprtalk-transcripts",
+      "database_id": "908450bb-dfc6-42cf-8859-b009c9ccfbac"
+    }
+  ]
 }

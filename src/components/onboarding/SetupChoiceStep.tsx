@@ -27,6 +27,7 @@ import { BrandMark } from "./OnboardingShell";
 import { LOCAL_ASR_ORGANIZATIONS } from "../../helpers/localASROrganization";
 import { getProviderIcon, isMonochromeProvider } from "@/utils/providerIcons";
 import { cn } from "../lib/utils";
+import { WHISPRTALK_CLOUD_URL } from "../../config/constants";
 // Only the Local card opens the warning dialog now — BYOK goes
 // straight through from the "Choose your API setup" modal.
 import warningBackdrop from "../../assets/onboarding-setup-warning-hero.webp";
@@ -43,7 +44,10 @@ const REFERENCE_LOCAL_MODEL_ID = "nemotron-3.5-asr-streaming-0.6b";
 interface SetupChoiceStepProps {
   isSignedIn: boolean;
   agentAllowed: boolean;
-  onSelect: (mode: SetupMode, options?: { selfHosted?: boolean }) => void;
+  onSelect: (
+    mode: SetupMode,
+    options?: { selfHosted?: boolean; whisprTalkCloud?: boolean }
+  ) => void;
   onRequestAuthentication: () => void;
 }
 
@@ -155,9 +159,11 @@ export default function SetupChoiceStep({
   } = availability;
   const moreOptionsAllowed = byokAllowed || selfHostedAllowed;
 
+  // WhisprTalk Cloud is the user's own Cloudflare Worker. Without a build-time
+  // URL the card falls through to the Self-Hosted form so the URL can be typed.
   const chooseCloud = () => {
-    if (isSignedIn) onSelect("cloud");
-    else onRequestAuthentication();
+    if (WHISPRTALK_CLOUD_URL) onSelect("cloud", { whisprTalkCloud: true });
+    else onSelect("byok", { selfHosted: true });
   };
 
   const confirmPending = () => {
@@ -342,9 +348,7 @@ export default function SetupChoiceStep({
               </div>
             </div>
             <CardAction brand onClick={chooseCloud}>
-              {isSignedIn
-                ? t("onboarding.rehaul.setupChoice.cloud.continue")
-                : t("onboarding.rehaul.setupChoice.cloud.signIn")}
+              {t("onboarding.rehaul.setupChoice.cloud.continue")}
             </CardAction>
           </SetupCard>
         )}

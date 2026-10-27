@@ -101,6 +101,42 @@ function withBrandFonts(plugins) {
   );
 }
 
+// OPENWHISPR_FREE_TEAM=1 builds a variant that a free Apple Personal Team can
+// sign: no app extensions, no App Group, no push, no Sign in with Apple. The
+// dictation keyboard and Live Activity are unavailable in that build.
+const FREE_TEAM = process.env.OPENWHISPR_FREE_TEAM === '1';
+const FREE_TEAM_DROPPED_PLUGINS = [
+  './plugins/keyboard-extension/withKeyboardExtension',
+  './plugins/activity-extension/withActivityExtension',
+];
+// Prebuild applies the expo-notifications and expo-apple-authentication plugins
+// for every installed package, so their entitlements are stripped here. Mods run
+// in reverse plugin order, so this plugin goes first in the list to run last.
+const FREE_TEAM_DROPPED_ENTITLEMENTS = [
+  'aps-environment',
+  'com.apple.developer.applesignin',
+  'com.apple.security.application-groups',
+];
+
+function withFreeTeamEntitlements(config) {
+  const { withEntitlementsPlist } = require('expo/config-plugins');
+  return withEntitlementsPlist(config, (cfg) => {
+    for (const key of FREE_TEAM_DROPPED_ENTITLEMENTS) delete cfg.modResults[key];
+    return cfg;
+  });
+}
+
+function withoutFreeTeamPlugins(plugins) {
+  if (!FREE_TEAM) return plugins;
+  return [
+    withFreeTeamEntitlements,
+    ...plugins.filter(
+      (plugin) =>
+        !FREE_TEAM_DROPPED_PLUGINS.includes(Array.isArray(plugin) ? plugin[0] : plugin),
+    ),
+  ];
+}
+
 function createGoogleCalendarConfig(environment) {
   const devClientId = firstNonEmpty(process.env.EXPO_PUBLIC_GOOGLE_CALENDAR_IOS_CLIENT_ID_DEV);
   const prodClientId = firstNonEmpty(process.env.EXPO_PUBLIC_GOOGLE_CALENDAR_IOS_CLIENT_ID);
@@ -137,40 +173,47 @@ module.exports = () => {
       'Affiliate configuration must match the app environment and use a publishable key',
     );
 
+  const ios = {
+    ...expo.ios,
+    // Expo writes any associatedDomains array, even an empty one, as a new entitlement.
+    ...(affiliate && {
+      associatedDomains: unique([
+        ...(expo.ios?.associatedDomains ?? []),
+        `applinks:${affiliate.domain}`,
+      ]),
+    }),
+    bundleIdentifier: environment.iosBundleIdentifier,
+    entitlements: {
+      ...(expo.ios?.entitlements ?? {}),
+      'com.apple.security.application-groups': [environment.appGroupId],
+    },
+    infoPlist: {
+      ...iosInfoPlist,
+      CFBundleDisplayName: environment.displayName,
+      LSApplicationQueriesSchemes: unique([
+        ...iosQueries,
+        environment.scheme,
+        googleCalendar.iosRedirectScheme,
+        environment.iosBundleIdentifier,
+      ]),
+    },
+  };
+  if (FREE_TEAM) {
+    ios.usesAppleSignIn = false;
+    delete ios.appleTeamId; // pass DEVELOPMENT_TEAM to xcodebuild instead
+    delete ios.infoPlist.NSSupportsLiveActivities; // no OpenWhisprActivity extension
+  }
+
   return {
     ...expo,
     name: expo.name,
     scheme: singleOrMany([environment.scheme, googleCalendar.iosRedirectScheme]),
-    ios: {
-      ...expo.ios,
-      // Expo writes any associatedDomains array, even an empty one, as a new entitlement.
-      ...(affiliate && {
-        associatedDomains: unique([
-          ...(expo.ios?.associatedDomains ?? []),
-          `applinks:${affiliate.domain}`,
-        ]),
-      }),
-      bundleIdentifier: environment.iosBundleIdentifier,
-      entitlements: {
-        ...(expo.ios?.entitlements ?? {}),
-        'com.apple.security.application-groups': [environment.appGroupId],
-      },
-      infoPlist: {
-        ...iosInfoPlist,
-        CFBundleDisplayName: environment.displayName,
-        LSApplicationQueriesSchemes: unique([
-          ...iosQueries,
-          environment.scheme,
-          googleCalendar.iosRedirectScheme,
-          environment.iosBundleIdentifier,
-        ]),
-      },
-    },
+    ios,
     android: {
       ...expo.android,
       package: environment.androidPackage,
     },
-    plugins: withBrandFonts(expo.plugins),
+    plugins: withBrandFonts(withoutFreeTeamPlugins(expo.plugins)),
     extra: {
       ...expo.extra,
       affiliate,
