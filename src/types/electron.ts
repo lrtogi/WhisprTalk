@@ -2929,6 +2929,15 @@ declare global {
       getVoiceAgentKey?: () => Promise<string>;
       updateTranslationHotkey?: (hotkey: string) => Promise<{ success: boolean; message?: string }>;
       getTranslationKey?: () => Promise<string>;
+      updatePasteLastTranscriptHotkey?: (
+        hotkey: string
+      ) => Promise<{ success: boolean; message?: string }>;
+      getPasteLastTranscriptKey?: () => Promise<string>;
+      updateCopyLastTranscriptHotkey?: (
+        hotkey: string
+      ) => Promise<{ success: boolean; message?: string }>;
+      getCopyLastTranscriptKey?: () => Promise<string>;
+      onLastTranscriptEmpty?: (callback: () => void) => () => void;
       createAgentConversation?: (
         title: string,
         noteId?: number | null,

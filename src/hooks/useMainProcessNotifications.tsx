@@ -38,6 +38,13 @@ export function useMainProcessNotifications({
       });
     });
 
+    const unsubscribeLastTranscriptEmpty = window.electronAPI?.onLastTranscriptEmpty?.(() => {
+      toast({
+        title: t("app.toasts.lastTranscriptEmpty.title"),
+        description: t("app.toasts.lastTranscriptEmpty.description"),
+      });
+    });
+
     const showGpuFallbackToast = () => {
       let toastId: string;
       toastId = toast({
@@ -101,6 +108,7 @@ export function useMainProcessNotifications({
     return () => {
       unsubscribeFallback?.();
       unsubscribeFailed?.();
+      unsubscribeLastTranscriptEmpty?.();
       unsubscribeCudaFallback?.();
       unsubscribeGpuFallback?.();
       unsubscribeCorrections?.();
