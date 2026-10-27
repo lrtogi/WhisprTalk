@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { API_ENDPOINTS } from "../config/constants";
+import { API_ENDPOINTS, WHISPRTALK_CLOUD_URL } from "../config/constants";
 import i18n, { normalizeUiLanguage } from "../i18n";
 import { ensureAgentNameInDictionary } from "../utils/agentName";
 import { chooseDictionaryStartupAction } from "../helpers/dictionaryStartup";
@@ -550,6 +550,26 @@ function migrateUploadSelfHosted() {
 }
 
 migrateUploadSelfHosted();
+
+// The first WhisprTalk Cloud onboarding wrote the Worker URL only to the keyed
+// custom endpoint. byok + custom is the self-hosted mode, which routes on the
+// remote URL, so every cleanup failed with "HTTPS required" on an empty URL.
+function migrateWhisprTalkCloudReasoning() {
+  if (!isBrowser || !WHISPRTALK_CLOUD_URL) return;
+  if (localStorage.getItem("cleanupMode") !== "self-hosted") return;
+  if (localStorage.getItem("cleanupCloudBaseUrl") !== WHISPRTALK_CLOUD_URL) return;
+  for (const key of [
+    "cleanupRemoteUrl",
+    "noteFormattingRemoteUrl",
+    "translationRemoteUrl",
+    "chatAgentRemoteUrl",
+    "dictationAgentRemoteUrl",
+  ]) {
+    if (!localStorage.getItem(key)) localStorage.setItem(key, WHISPRTALK_CLOUD_URL);
+  }
+}
+
+migrateWhisprTalkCloudReasoning();
 
 // Dictation and upload render `*TranscriptionMode` in their picker but route on
 // `*UseLocalWhisper` (audioManager, fileTranscription) and `*CloudTranscriptionMode`

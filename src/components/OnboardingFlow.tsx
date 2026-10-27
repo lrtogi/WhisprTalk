@@ -752,6 +752,9 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
             cleanupProvider: "custom",
             cleanupModel: WHISPRTALK_CLOUD_CHAT_MODEL,
             cleanupCloudBaseUrl: WHISPRTALK_CLOUD_URL,
+            // byok + custom derives the self-hosted mode, which routes on the
+            // remote URL, not the keyed custom endpoint.
+            cleanupRemoteUrl: WHISPRTALK_CLOUD_URL,
             // The Worker ignores the bearer; the Custom provider just needs one.
             cleanupCustomApiKey: "whisprtalk",
             useCleanupModel: true,
