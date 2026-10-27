@@ -80,6 +80,7 @@
       "./plugins/activity-extension/withActivityExtension",
       "./plugins/settings-bundle/withSettingsBundle",
       "./plugins/hotkey-dictation/withHotkeyDictation",
+      "./plugins/ui-scene/withUIScene",
       "./plugins/speaker-diarization/withSpeakerDiarization",
       "expo-web-browser",
       "expo-image",

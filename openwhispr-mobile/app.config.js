@@ -131,8 +131,7 @@ function withoutFreeTeamPlugins(plugins) {
   return [
     withFreeTeamEntitlements,
     ...plugins.filter(
-      (plugin) =>
-        !FREE_TEAM_DROPPED_PLUGINS.includes(Array.isArray(plugin) ? plugin[0] : plugin),
+      (plugin) => !FREE_TEAM_DROPPED_PLUGINS.includes(Array.isArray(plugin) ? plugin[0] : plugin),
     ),
   ];
 }
@@ -207,6 +206,8 @@ module.exports = () => {
   return {
     ...expo,
     name: expo.name,
+    // WhisprTalk: never pull OpenWhispr's OTA bundles over this fork's JS.
+    updates: { enabled: false },
     scheme: singleOrMany([environment.scheme, googleCalendar.iosRedirectScheme]),
     ios,
     android: {
