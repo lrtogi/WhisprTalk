@@ -127,7 +127,11 @@ import {
 import { providerSupportsImages } from "../services/ai/inferenceProviders";
 import { resolveDictationTranslationInference } from "./dictationTranslationInference";
 import { resolvePrompt, appendScreenContextSuffix } from "../config/prompts";
-import { resolveDictationToneStyle } from "../config/toneStyle";
+import {
+  applyDictationFormat,
+  resolveDictationFormat,
+  resolveDictationToneStyle,
+} from "../config/toneStyle";
 import { selectionEditToneSentence } from "../config/prompts/toneStyle";
 import { syncService } from "../services/SyncService.js";
 import { evaluateFinishedRecording, withSalvageWarning } from "./recordingValidation";
@@ -1103,7 +1107,12 @@ registerProcessor("pcm-streaming-processor", PCMStreamingProcessor);
       pending,
       new Promise((resolve) => setTimeout(() => resolve(null), 1500)),
     ]);
-    const toneStyle = resolveDictationToneStyle(settings.toneStyles, appCategory);
+    // The usual `ai` cleanup names no format, so a Cloud request stays as it was.
+    const format = resolveDictationFormat(settings.toneFormats, appCategory);
+    const toneStyle = {
+      ...resolveDictationToneStyle(settings.toneStyles, appCategory),
+      ...(format !== "ai" ? { format } : {}),
+    };
     logger.logReasoning("TONE_STYLE", toneStyle);
     return toneStyle;
   }
@@ -3439,6 +3448,8 @@ registerProcessor("pcm-streaming-processor", PCMStreamingProcessor);
           route.kind === "cleanup"
             ? { ...route.config, toneStyle: await this.consumeToneStyle() }
             : route.config;
+        // The `raw` format pastes the transcript as dictated.
+        if (reasoningConfig.toneStyle?.format === "raw") return normalizedText;
 
         logger.logReasoning("SENDING_TO_REASONING", {
           preparedTextLength: normalizedText.length,
@@ -3474,7 +3485,10 @@ registerProcessor("pcm-streaming-processor", PCMStreamingProcessor);
         });
 
         // A blank reply must not wipe the dictation — keep the transcript (#1616).
-        return hasTextContent(result) ? result : normalizedText;
+        return applyDictationFormat(
+          hasTextContent(result) ? result : normalizedText,
+          reasoningConfig.toneStyle
+        );
       } catch (error) {
         if (error.selectionEditFatal) throw error;
         if (wasCancelled()) return normalizedText;
@@ -3745,7 +3759,9 @@ registerProcessor("pcm-streaming-processor", PCMStreamingProcessor);
         route.kind === "cleanup" && !wasCancelled() ? await this.consumeToneStyle() : null;
 
       try {
-        if (route.kind === "agent") {
+        if (toneStyle?.format === "raw") {
+          // The `raw` format pastes the transcript as dictated.
+        } else if (route.kind === "agent") {
           const reasoned = await this.processAgentCommand(
             processedText,
             route.model,
@@ -3858,6 +3874,7 @@ registerProcessor("pcm-streaming-processor", PCMStreamingProcessor);
           if (route.kind === "agent") this._notifyAgentReasoningFailed();
         }
       }
+      processedText = applyDictationFormat(processedText, toneStyle);
       timings.reasoningProcessingDurationMs = Math.round(performance.now() - reasoningStart);
     }
 
@@ -4848,7 +4865,10 @@ registerProcessor("pcm-streaming-processor", PCMStreamingProcessor);
       !isCloudCleanupMode() ||
       !isLlmSelectionAllowed(usePolicyStore.getState(), { mode: "openwhispr" }) ||
       voiceAgentRequested ||
-      translationRequested
+      translationRequested ||
+      // The `raw` format pastes the transcript as dictated.
+      (settings.toneStyleEnabled &&
+        resolveDictationFormat(settings.toneFormats, appCategory) === "raw")
     )
       return undefined;
     return {
@@ -6031,7 +6051,10 @@ registerProcessor("pcm-streaming-processor", PCMStreamingProcessor);
       const toneStyle = route.kind === "cleanup" ? await this.consumeToneStyle() : null;
 
       try {
-        if (route.kind === "agent") {
+        if (toneStyle?.format === "raw") {
+          // The `raw` format pastes the transcript as dictated, even over a
+          // combined cleanup minted before the app was known.
+        } else if (route.kind === "agent") {
           const reasoned = await this.processAgentCommand(
             finalText,
             route.model,
@@ -6186,6 +6209,7 @@ registerProcessor("pcm-streaming-processor", PCMStreamingProcessor);
         if (route.kind === "agent") this._notifyAgentReasoningFailed();
       }
       if (wasCancelled()) return true;
+      finalText = applyDictationFormat(finalText, toneStyle);
     }
 
     // If streaming produced no text, fall back to batch — routed so BYOK audio

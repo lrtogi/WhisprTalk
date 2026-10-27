@@ -14,7 +14,12 @@ import type {
 } from "../types/electron";
 import type { CalendarAccount, MicrosoftCalendarAccount } from "../types/calendar";
 import { normalizeEmailDraftTarget, type EmailDraftTargetSetting } from "../utils/emailDraftTarget";
-import { normalizeToneStyles, type ToneStyles } from "../config/toneStyle";
+import {
+  normalizeToneFormats,
+  normalizeToneStyles,
+  type ToneFormats,
+  type ToneStyles,
+} from "../config/toneStyle";
 import { PROMPT_KIND_LIST, type PromptKind } from "../config/prompts/registry";
 import { sweepRetiredPromptOverrides } from "../config/retiredPrompts";
 import {
@@ -1018,6 +1023,7 @@ export interface SettingsState
   emailDraftTarget: EmailDraftTargetSetting;
   toneStyleEnabled: boolean;
   toneStyles: ToneStyles;
+  toneFormats: ToneFormats;
   useDictationAgentVisionModel: boolean;
   dictationAgentVisionMode: InferenceMode;
   dictationAgentVisionProvider: string;
@@ -1051,6 +1057,7 @@ export interface SettingsState
   setVoiceAgentScreenContext: (value: boolean) => void;
   setToneStyleEnabled: (value: boolean) => void;
   setToneStyles: (styles: ToneStyles) => void;
+  setToneFormats: (formats: ToneFormats) => void;
   setEmailDraftTarget: (value: EmailDraftTargetSetting) => void;
   setUseDictationAgentVisionModel: (value: boolean) => void;
   setDictationAgentVisionProvider: (value: string) => void;
@@ -1973,6 +1980,7 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
   emailDraftTarget: normalizeEmailDraftTarget(readString("emailDraftTarget", "auto")),
   toneStyleEnabled: readBoolean("toneStyleEnabled", false),
   toneStyles: normalizeToneStyles(readString("toneStyles", "")),
+  toneFormats: normalizeToneFormats(readString("toneFormats", "")),
   useDictationAgentVisionModel: readBoolean("useDictationAgentVisionModel", false),
   // Cloud already vision-routes screenshot commands, so the override is BYOK-only.
   dictationAgentVisionMode: "providers" as InferenceMode,
@@ -2022,6 +2030,10 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
   setToneStyles: (styles) => {
     if (isBrowser) localStorage.setItem("toneStyles", JSON.stringify(styles));
     useSettingsStore.setState({ toneStyles: styles });
+  },
+  setToneFormats: (formats) => {
+    if (isBrowser) localStorage.setItem("toneFormats", JSON.stringify(formats));
+    useSettingsStore.setState({ toneFormats: formats });
   },
   setUseDictationAgentVisionModel: createBooleanSetter("useDictationAgentVisionModel"),
   setDictationAgentVisionProvider: createStringSetter("dictationAgentVisionProvider"),
@@ -3836,6 +3848,8 @@ export async function initializeSettings(): Promise<void> {
       value = normalizeEmailDraftTarget(newValue);
     } else if (key === "toneStyles") {
       value = normalizeToneStyles(newValue);
+    } else if (key === "toneFormats") {
+      value = normalizeToneFormats(newValue);
     } else {
       value = newValue;
     }
