@@ -2186,6 +2186,14 @@
       "translationHotkey": {
         "title": "翻译快捷键",
         "description": "用任何语言听写——粘贴的文本会自动翻译"
+      },
+      "pasteLastTranscriptHotkey": {
+        "title": "Paste Last Transcript Hotkey",
+        "description": "Paste your most recent dictation again at the cursor"
+      },
+      "copyLastTranscriptHotkey": {
+        "title": "Copy Last Transcript Hotkey",
+        "description": "Copy your most recent dictation to the clipboard without pasting"
       }
     },
     "permissions": {
@@ -3816,6 +3824,10 @@
       "cleanupFailed": {
         "title": "清理失败",
         "description": "你的听写已直接粘贴，未经 AI 清理。"
+      },
+      "lastTranscriptEmpty": {
+        "title": "No transcript yet",
+        "description": "Dictate something first, then press the hotkey to paste or copy it."
       }
     },
     "mic": {
@@ -5029,6 +5041,13 @@
       "turnOnCleanup": "开启文本整理",
       "enabled": "启用语气与声音",
       "enabledDescription": "文本整理、助手和聊天会为每类应用使用你的语气。关闭时使用标准语气。"
+    },
+    "formats": {
+      "label": "Format",
+      "ai": "AI cleanup",
+      "raw": "Raw transcript",
+      "casual": "Casual (no caps, no final period)",
+      "lowercase": "All lowercase"
     }
   },
   "productHelp": {

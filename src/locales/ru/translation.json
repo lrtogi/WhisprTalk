@@ -2190,6 +2190,14 @@
       "translationHotkey": {
         "title": "Горячая клавиша перевода",
         "description": "Диктуйте на любом языке — вставленный текст будет переведён"
+      },
+      "pasteLastTranscriptHotkey": {
+        "title": "Paste Last Transcript Hotkey",
+        "description": "Paste your most recent dictation again at the cursor"
+      },
+      "copyLastTranscriptHotkey": {
+        "title": "Copy Last Transcript Hotkey",
+        "description": "Copy your most recent dictation to the clipboard without pasting"
       }
     },
     "permissions": {
@@ -3860,6 +3868,10 @@
       "cleanupFailed": {
         "title": "Не удалось выполнить очистку",
         "description": "Диктовка вставлена без ИИ-очистки."
+      },
+      "lastTranscriptEmpty": {
+        "title": "No transcript yet",
+        "description": "Dictate something first, then press the hotkey to paste or copy it."
       }
     },
     "mic": {
@@ -5075,6 +5087,13 @@
       "turnOnCleanup": "Включить очистку текста",
       "enabled": "Тон и голос включены",
       "enabledDescription": "Очистка текста, ассистент и чаты используют ваш тон для каждого типа приложений. Если выключено, используется стандартный тон."
+    },
+    "formats": {
+      "label": "Format",
+      "ai": "AI cleanup",
+      "raw": "Raw transcript",
+      "casual": "Casual (no caps, no final period)",
+      "lowercase": "All lowercase"
     }
   },
   "productHelp": {

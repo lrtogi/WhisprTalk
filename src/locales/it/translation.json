@@ -2186,6 +2186,14 @@
       "translationHotkey": {
         "title": "Hotkey Traduzione",
         "description": "Detta in qualsiasi lingua: il testo incollato esce tradotto"
+      },
+      "pasteLastTranscriptHotkey": {
+        "title": "Paste Last Transcript Hotkey",
+        "description": "Paste your most recent dictation again at the cursor"
+      },
+      "copyLastTranscriptHotkey": {
+        "title": "Copy Last Transcript Hotkey",
+        "description": "Copy your most recent dictation to the clipboard without pasting"
       }
     },
     "permissions": {
@@ -3816,6 +3824,10 @@
       "cleanupFailed": {
         "title": "Pulizia non riuscita",
         "description": "La dettatura è stata incollata senza pulizia IA."
+      },
+      "lastTranscriptEmpty": {
+        "title": "No transcript yet",
+        "description": "Dictate something first, then press the hotkey to paste or copy it."
       }
     },
     "mic": {
@@ -5029,6 +5041,13 @@
       "turnOnCleanup": "Attiva correzione testo",
       "enabled": "Toni e voci attivi",
       "enabledDescription": "La correzione testo, l'assistente e le chat usano il tuo tono per ogni tipo di app. Se disattivato, usano il tono standard."
+    },
+    "formats": {
+      "label": "Format",
+      "ai": "AI cleanup",
+      "raw": "Raw transcript",
+      "casual": "Casual (no caps, no final period)",
+      "lowercase": "All lowercase"
     }
   },
   "productHelp": {

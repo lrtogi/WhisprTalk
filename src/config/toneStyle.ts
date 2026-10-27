@@ -87,7 +87,8 @@ export function resolveDictationFormat(
   toneFormats: ToneFormats,
   appCategory: ToneAppCategory | null
 ): DictationFormat {
-  return toneFormats[appCategory ?? "other"];
+  // Older settings snapshots (and test fixtures) predate toneFormats.
+  return toneFormats?.[appCategory ?? "other"] ?? "ai";
 }
 
 /** Lowercases cleaned-up text when the app's format asks for it. */

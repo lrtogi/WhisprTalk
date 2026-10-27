@@ -28,6 +28,9 @@ so the sign-in paths are dead.
   The URL (with token) comes from the git-ignored `.env.local` (repo root) at build time.
 - `cloudflare-worker/`: the Worker (Whisper large-v3-turbo ASR, OpenAI-compatible chat proxy, D1 transcript log)
 - `electron-builder.json` no longer packs `openwhispr-mobile/`, `cloudflare-worker/`, `docs/`
+- **Paste last transcript / Copy last transcript** hotkeys (Settings → Hotkeys, unset by default)
+- **Per-app transcription format** in Settings → Tone & Style: AI (default), Raw (no cleanup pass),
+  Casual (proper nouns only, no trailing period), Lowercase
 
 Tests: same 17 failures as a clean upstream checkout, none new.
 
@@ -74,13 +77,11 @@ Wispr Flow has **no local speech recognition at all**; every dictation streams t
 
 Backlog (not built yet, in rough value order):
 
-1. **Paste/copy last transcript hotkey** (Wispr `paste_last_text`). Today: History → copy.
-2. **Per-app format presets**: Raw / Casual / all-lowercase per app, beyond Tone & Style.
-3. **Polish with diff view** and up to 9 custom transform prompts on hotkeys.
-4. **Live translation of the meeting transcript**.
-5. **Consent chat message** when a note starts in a meeting.
-6. **Notes sync Mac ↔ iPhone through the Worker** (D1/R2). The log endpoint is the seed.
-7. Flow Fetch, Focus Mode, Wispr Memory.
+1. **Polish with diff view** and up to 9 custom transform prompts on hotkeys.
+2. **Live translation of the meeting transcript**.
+3. **Consent chat message** when a note starts in a meeting.
+4. **Notes sync Mac ↔ iPhone through the Worker** (D1/R2). The log endpoint is the seed.
+5. Flow Fetch, Focus Mode, Wispr Memory.
 
 ## Rebuild / reinstall
 

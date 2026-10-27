@@ -1870,6 +1870,10 @@
       "cleanupFailed": {
         "title": "فشل التنقيح",
         "description": "تم لصق الإملاء الأصلي دون تنقيح بالذكاء الاصطناعي."
+      },
+      "lastTranscriptEmpty": {
+        "title": "No transcript yet",
+        "description": "Dictate something first, then press the hotkey to paste or copy it."
       }
     },
     "mic": {
@@ -3839,6 +3843,14 @@
       "translationHotkey": {
         "title": "مفتاح اختصار الترجمة",
         "description": "قم بالإملاء بأي لغة — يخرج النص الملصق مترجمًا"
+      },
+      "pasteLastTranscriptHotkey": {
+        "title": "Paste Last Transcript Hotkey",
+        "description": "Paste your most recent dictation again at the cursor"
+      },
+      "copyLastTranscriptHotkey": {
+        "title": "Copy Last Transcript Hotkey",
+        "description": "Copy your most recent dictation to the clipboard without pasting"
       }
     },
     "permissions": {
@@ -5151,6 +5163,13 @@
       "turnOnCleanup": "تشغيل تنظيف النص",
       "enabled": "النبرات والأصوات مفعّلة",
       "enabledDescription": "يستخدم تنظيف النص والمساعد والمحادثات نبرتك لكل نوع من التطبيقات. عند الإيقاف، تُستخدم النبرة القياسية."
+    },
+    "formats": {
+      "label": "Format",
+      "ai": "AI cleanup",
+      "raw": "Raw transcript",
+      "casual": "Casual (no caps, no final period)",
+      "lowercase": "All lowercase"
     }
   },
   "productHelp": {

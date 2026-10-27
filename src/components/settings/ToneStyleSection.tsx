@@ -8,7 +8,6 @@ import { useToast } from "../ui/useToast";
 import { cn } from "../lib/utils";
 import { useSettingsStore } from "../../stores/settingsStore";
 import { dismissToneStyleBanner } from "../../hooks/useToneStylePrompt";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import {
   DICTATION_FORMATS,
   TONE_APP_CATEGORIES,
@@ -145,34 +144,37 @@ export default function ToneStyleSection({ onOpenCleanupSettings }: ToneStyleSec
                   <span className="text-[13px] text-muted-foreground">
                     {t("toneStyle.formats.label")}
                   </span>
-                  <Select
-                    value={formatDraft[category]}
-                    disabled={!toneStyleEnabled}
-                    onValueChange={(format) =>
-                      setFormatDraft((current) => ({
-                        ...current,
-                        [category]: format as DictationFormat,
-                      }))
-                    }
+                  {/* Pills rather than a Select: the tone buttons above set the
+                      pattern, and the test DOM has no native <select>. */}
+                  <div
+                    role="group"
+                    aria-label={`${title}: ${t("toneStyle.formats.label")}`}
+                    className="flex flex-wrap justify-end gap-1.5"
                   >
-                    <SelectTrigger
-                      aria-label={`${title}: ${t("toneStyle.formats.label")}`}
-                      className="h-7 w-44 shrink-0 rounded-lg px-2.5 text-xs [&>svg]:h-3 [&>svg]:w-3"
-                    >
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {DICTATION_FORMATS.map((format) => (
-                        <SelectItem
+                    {DICTATION_FORMATS.map((format) => {
+                      const selected = formatDraft[category] === format;
+                      return (
+                        <button
                           key={format}
-                          value={format}
-                          className="rounded-md py-1.5 pe-7 ps-2.5 text-xs"
+                          type="button"
+                          aria-pressed={selected}
+                          disabled={!toneStyleEnabled}
+                          onClick={() =>
+                            setFormatDraft((current) => ({ ...current, [category]: format }))
+                          }
+                          className={cn(
+                            "h-7 rounded-lg border px-2.5 text-xs text-foreground transition-colors",
+                            "outline-none focus-visible:ring-2 focus-visible:ring-ring/30",
+                            selected
+                              ? "border-transparent bg-primary/12 dark:bg-primary/15"
+                              : "border-border hover:bg-muted/50 dark:border-white/10 dark:hover:bg-white/5"
+                          )}
                         >
                           {t(`toneStyle.formats.${format}`)}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </section>
             );
